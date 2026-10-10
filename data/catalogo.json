@@ -1,0 +1,53 @@
+[
+    {
+        "id_repuesto": "REP-001",
+        "nombre": "Balatas Delanteras Cerámicas",
+        "atributos_visuales": [
+            "balatas",
+            "frenos",
+            "forma de media luna",
+            "cerámica",
+            "pastillas"
+        ],
+        "vehiculos_compatibles": [
+            {
+                "marca": "Honda",
+                "modelo": "Civic",
+                "anio_desde": 2016,
+                "anio_hasta": 2021
+            },
+            {
+                "marca": "Honda",
+                "modelo": "CR-V",
+                "anio_desde": 2017,
+                "anio_hasta": 2022
+            }
+        ]
+    },
+    {
+        "id_repuesto": "REP-002",
+        "nombre": "Filtro de Aceite Metálico",
+        "atributos_visuales": [
+            "filtro",
+            "aceite",
+            "cilindro",
+            "metálico",
+            "negro",
+            "rosca"
+        ],
+        "vehiculos_compatibles": [
+            {
+                "marca": "Toyota",
+                "modelo": "Corolla",
+                "anio_desde": 2014,
+                "anio_hasta": 2023
+            },
+            {
+                "marca": "Toyota",
+                "modelo": "Yaris",
+                "anio_desde": 2015,
+                "anio_hasta": 2023
+            }
+        ]
+    }
+]

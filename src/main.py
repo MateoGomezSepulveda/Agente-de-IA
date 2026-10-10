@@ -1,67 +1,39 @@
 import asyncio
 import os
-from dotenv import load_dotenv
-from openai import AsyncOpenAI
-
-# Cargar variables de entorno desde .env
-load_dotenv()
-
-# Inicializamos el cliente apuntando a la API de Platica
-client = AsyncOpenAI(
-    base_url=os.getenv("base_url") or os.getenv("PLATICA_BASE_URL"),
-    api_key=os.getenv("api_key") or os.getenv("PLATICA_API_KEY"),
-)
-
-# Modelo predeterminado
-MODEL_NAME = os.getenv("PLATICA_MODEL", "grok-4.7")
+from src.agent import ejecutar_agente
 
 async def main():
-    print("Iniciando el Agente de IA para Platica (vía Grok / OpenAI API)...")
-    
-    # Prompt del sistema (System Instructions)
-    system_prompt = (
-        "Eres un agente de IA experto en repuestos de autopartes para Platica. "
-        "Tu objetivo es ayudar a identificar piezas, consultar catálogos "
-        "y generar cotizaciones claras para los clientes."
-    )
-    
-    # Historial de conversación
-    messages = [
-        {"role": "system", "content": system_prompt}
-    ]
-    
-    print("¡Agente inicializado con éxito!\n")
-    print("Escribe 'salir' para terminar la conversación.")
+    print("==================================================")
+    print("🚙 AGENTE DE IA PLATICA - IDENTIFICADOR DE PIEZAS")
+    print("==================================================")
+    print("Escribe la ruta (absoluta o relativa) de la fotografía de la pieza.")
+    print("Escribe 'salir' para terminar el programa.\n")
     
     while True:
-        user_input = input("\nCliente: ")
-        if user_input.lower() == 'salir':
-            print("Cerrando sesión del agente. ¡Hasta luego!")
+        ruta = input("📸 Ruta de la imagen: ").strip()
+        
+        # Quitar comillas si el usuario arrastró el archivo a la consola de Windows
+        ruta = ruta.strip('"').strip("'")
+        
+        if ruta.lower() == 'salir':
+            print("Cerrando el Agente. ¡Hasta luego!")
             break
             
-        messages.append({"role": "user", "content": user_input})
-        
-        print("\nAgente: ", end="", flush=True)
-        assistant_response = ""
-        
-        try:
-            # Petición con streaming
-            stream = await client.chat.completions.create(
-                model=MODEL_NAME,
-                messages=messages,
-                stream=True,
-            )
+        if not os.path.exists(ruta):
+            print(f"❌ El archivo '{ruta}' no existe. Revisa la ruta e intenta de nuevo.")
+            continue
             
-            async for chunk in stream:
-                token = chunk.choices[0].delta.content or ""
-                print(token, end="", flush=True)
-                assistant_response += token
-                
-            print()
-            messages.append({"role": "assistant", "content": assistant_response})
+        print("\nProcesando (esto puede tomar unos segundos)...")
+        try:
+            # Llamamos a la orquestación central
+            respuesta = await ejecutar_agente(ruta)
+            
+            print("\n================ RESPUESTA ==================")
+            print(respuesta)
+            print("=============================================\n")
             
         except Exception as e:
-            print(f"\n[Error de conexión con la API de Platica]: {e}")
+            print(f"\n❌ Ocurrió un error en la comunicación: {e}\n")
 
 if __name__ == "__main__":
     asyncio.run(main())

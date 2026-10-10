@@ -155,11 +155,11 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 - [ ] **Empezar a reunir fotos** de piezas reales (propias, de taller/desguace o públicas con licencia) para el dataset.
 
 #### Día 2 - Jue 8 oct: Datos y herramientas puras (sin créditos)
-- [ ] Crear `data/catalogo.json` (30-50 repuestos ficticios) **con tabla de compatibilidad** (`id_repuesto`, marca, modelo, año_desde, año_hasta) y atributos visuales descriptivos de cada pieza.
-- [ ] `scripts/crear_bd.py` y `src/db.py` (SQL parametrizado, solo lectura): tablas `inventario` y `compatibilidad`.
-- [ ] `src/tools.py`: `buscar_en_catalogo(atributos)` (inicialmente por palabras clave y filtros sobre atributos visuales) y `consultar_inventario(id_repuesto)`.
-- [ ] Esquemas JSON de las herramientas (formato `tools` de OpenAI).
-- [ ] Tests en `tests/` con casos normales y borde.
+- [x] Crear `data/catalogo.json` (30-50 repuestos ficticios) **con tabla de compatibilidad** (`id_repuesto`, marca, modelo, año_desde, año_hasta) y atributos visuales descriptivos de cada pieza.
+- [x] `scripts/crear_bd.py` y `src/db.py` (SQL parametrizado, solo lectura): tablas `inventario` y `compatibilidad`.
+- [x] `src/tools.py`: `buscar_en_catalogo(atributos)` (inicialmente por palabras clave y filtros sobre atributos visuales) y `consultar_inventario(id_repuesto)`.
+- [x] Esquemas JSON de las herramientas (formato `tools` de OpenAI).
+- [x] Tests en `tests/` con casos normales y borde.
 
 #### Día 3 - Vie 9 oct: Bucle del agente con LLM simulado (sin créditos)
 - [ ] `src/llm_mock.py`: cliente falso que devuelve respuestas y `tool_calls` predefinidos.
@@ -169,11 +169,11 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 - [ ] **Si ya hay créditos:** verificar tool calling real con 1 petición mínima. Plan B: el modelo responde JSON y el código lo interpreta como acción.
 
 #### Día 4 - Sáb 10 oct: Visión (ruta crítica) y primer end-to-end real
-- [ ] **Primero:** verificar visión con 1 imagen pequeña. Si no hay visión disponible, escalar con Platica ese mismo día.
-- [ ] `src/vision.py`: leer imagen, validar formato y tamaño, reducir resolución, convertir a base64.
-- [ ] Prompt de extracción estructurada: tipo de pieza, material, color, forma, daño, códigos/logos legibles, nivel de confianza.
-- [ ] Primer recorrido completo: foto → pieza → vehículos compatibles → cotización.
-- [ ] `src/main.py`: recibe la ruta de una imagen (y opcionalmente una segunda) y muestra la respuesta.
+- [x] **Primero:** verificar visión con 1 imagen pequeña. Si no hay visión disponible, escalar con Platica ese mismo día.
+- [x] `src/vision.py`: leer imagen, validar formato y tamaño, reducir resolución, convertir a base64.
+- [x] Prompt de extracción estructurada: tipo de pieza, material, color, forma, daño, códigos/logos legibles, nivel de confianza.
+- [x] Primer recorrido completo: foto → pieza → vehículos compatibles → cotización.
+- [x] `src/main.py`: recibe la ruta de una imagen (y opcionalmente una segunda) y muestra la respuesta.
 
 #### Día 5 - Dom 11 oct: Segunda foto, guardrails y cotización
 - [ ] Umbral de confianza: bajo el umbral con una sola foto → `necesita_otra_foto` indicando qué mostrar.
