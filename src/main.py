@@ -1,44 +1,67 @@
 import asyncio
 import os
 from dotenv import load_dotenv
-from google.antigravity import Agent, LocalAgentConfig, CapabilitiesConfig
+from openai import AsyncOpenAI
 
-# Cargar variables de entorno desde el archivo .env
+# Cargar variables de entorno desde .env
 load_dotenv()
 
+# Inicializamos el cliente apuntando a la API de Platica
+client = AsyncOpenAI(
+    base_url=os.getenv("base_url") or os.getenv("PLATICA_BASE_URL"),
+    api_key=os.getenv("api_key") or os.getenv("PLATICA_API_KEY"),
+)
+
+# Modelo predeterminado
+MODEL_NAME = os.getenv("PLATICA_MODEL", "grok-4.7")
+
 async def main():
-    print("Iniciando el Agente de IA para Platica...")
+    print("Iniciando el Agente de IA para Platica (vía Grok / OpenAI API)...")
     
-    # Configuramos el agente con nuestra instrucción del sistema (System Prompt) base
-    config = LocalAgentConfig(
-        system_instructions=(
-            "Eres un agente de IA experto en repuestos de autopartes. "
-            "Tu objetivo es ayudar a identificar piezas, consultar catálogos "
-            "y generar cotizaciones claras para los clientes."
-        ),
-        # Por ahora habilitamos las capacidades por defecto
-        capabilities=CapabilitiesConfig(),
+    # Prompt del sistema (System Instructions)
+    system_prompt = (
+        "Eres un agente de IA experto en repuestos de autopartes para Platica. "
+        "Tu objetivo es ayudar a identificar piezas, consultar catálogos "
+        "y generar cotizaciones claras para los clientes."
     )
     
-    # Instanciamos el agente usando un manejador de contexto asíncrono
-    async with Agent(config) as agent:
-        print("¡Agente inicializado con éxito!\n")
-        print("Escribe 'salir' para terminar la conversación.")
-        
-        # Bucle interactivo para conversar por terminal
-        while True:
-            user_input = input("\nCliente: ")
-            if user_input.lower() == 'salir':
-                break
-                
-            print("\nAgente:")
-            # Enviamos el mensaje al agente (todavía sin fotos ni herramientas, solo texto)
-            response = await agent.chat(user_input)
+    # Historial de conversación
+    messages = [
+        {"role": "system", "content": system_prompt}
+    ]
+    
+    print("¡Agente inicializado con éxito!\n")
+    print("Escribe 'salir' para terminar la conversación.")
+    
+    while True:
+        user_input = input("\nCliente: ")
+        if user_input.lower() == 'salir':
+            print("Cerrando sesión del agente. ¡Hasta luego!")
+            break
             
-            # Mostramos la respuesta en tiempo real (streaming)
-            async for token in response:
+        messages.append({"role": "user", "content": user_input})
+        
+        print("\nAgente: ", end="", flush=True)
+        assistant_response = ""
+        
+        try:
+            # Petición con streaming
+            stream = await client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=messages,
+                stream=True,
+            )
+            
+            async for chunk in stream:
+                token = chunk.choices[0].delta.content or ""
                 print(token, end="", flush=True)
+                assistant_response += token
+                
             print()
+            messages.append({"role": "assistant", "content": assistant_response})
+            
+        except Exception as e:
+            print(f"\n[Error de conexión con la API de Platica]: {e}")
 
 if __name__ == "__main__":
     asyncio.run(main())

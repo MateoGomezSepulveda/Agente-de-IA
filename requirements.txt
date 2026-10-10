@@ -1,2 +1,2 @@
-google-antigravity
-python-dotenv
+openai==3.26.0
+python-dotenv==1.2.3
