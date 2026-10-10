@@ -48,38 +48,54 @@ FUNCIONES = {
     "consultar_inventario": consultar_inventario
 }
 
-async def ejecutar_agente(ruta_imagen: str):
+async def ejecutar_agente(ruta_imagen: str, ruta_segunda_imagen: str = None):
     """
-    Ciclo principal del Agente. Analiza la foto, usa herramientas automáticamente
-    y emite el resultado final.
+    Ciclo principal del Agente. Soporta una segunda imagen opcional si la primera no fue suficiente.
     """
     cliente = crear_cliente()
-    base64_image = procesar_imagen_base64(ruta_imagen)
+    base64_img1 = procesar_imagen_base64(ruta_imagen)
     
-    # El "System Prompt" dicta la personalidad y reglas estrictas del agente
     system_prompt = (
-        "Eres un experto automotriz de Platica. Tu trabajo es ver la foto, "
-        "identificar la pieza visualmente, usar 'buscar_en_catalogo' para ver la compatibilidad, "
-        "y usar 'consultar_inventario' para ver el precio. "
-        "REGLA DE ORO: NUNCA inventes precios, IDs ni vehículos compatibles. Usa SIEMPRE "
-        "los datos que te devuelvan las herramientas."
+        "Eres un experto automotriz de Platica. Identifica la pieza visualmente, "
+        "usa 'buscar_en_catalogo' y luego 'consultar_inventario'.\n"
+        "REGLA 1: NUNCA inventes precios, IDs ni vehículos compatibles.\n"
+        "REGLA 2: OBLIGATORIAMENTE debes responder SOLO con un objeto JSON válido con esta estructura:\n"
+        "{\n"
+        '  "estado": "cotizado | necesita_otra_foto | derivar_a_humano",\n'
+        '  "pieza": {"id": "...", "nombre": "...", "confianza": 0.0},\n'
+        '  "vehiculos_compatibles": [{"marca": "...", "modelo": "...", "anio_desde": 0, "anio_hasta": 0}],\n'
+        '  "cotizacion": {"precio_unitario": 0.0, "stock": 0, "total": 0.0},\n'
+        '  "foto_adicional_solicitada": "Qué ángulo o etiqueta falta (solo si el estado es necesita_otra_foto)",\n'
+        '  "motivo": "explicación breve"\n'
+        "}\n"
+        "Si necesitas ver otra foto para estar seguro, devuelve estado 'necesita_otra_foto'. "
+        "Si ya recibiste dos fotos y sigues sin encontrarla en el catálogo o inventario, tu estado DEBE ser 'derivar_a_humano'."
     )
     
-    # Historial inicial
+    contenido_usuario = [
+        {"type": "text", "text": "Identifica esta pieza, busca sus compatibles en catálogo y cotízala en inventario."}
+    ]
+    
+    # Agregamos la primera foto
+    contenido_usuario.append({
+        "type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_img1}"}
+    })
+    
+    # Si hay una segunda foto, la agregamos al MISMO mensaje para darle contexto completo
+    if ruta_segunda_imagen:
+        base64_img2 = procesar_imagen_base64(ruta_segunda_imagen)
+        contenido_usuario.append({"type": "text", "text": "Aquí tienes una segunda foto con más detalles (ej. etiqueta, otro ángulo):"})
+        contenido_usuario.append({
+            "type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_img2}"}
+        })
+        
     mensajes = [
         {"role": "system", "content": system_prompt},
-        {
-            "role": "user", 
-            "content": [
-                {"type": "text", "text": "Identifica esta pieza, dime sus compatibles y cotízala."},
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image}"}}
-            ]
-        }
+        {"role": "user", "content": contenido_usuario}
     ]
     
     print(f"🧠 Iniciando agente con modelo {MODEL}...")
     
-    # EL BUCLE DEL AGENTE
     for iteracion in range(MAX_ITERACIONES):
         print(f"🔄 Pensando (Iteración {iteracion + 1})...")
         
@@ -91,25 +107,32 @@ async def ejecutar_agente(ruta_imagen: str):
         )
         
         mensaje_llm = respuesta.choices[0].message
-        mensajes.append(mensaje_llm) # Guardamos su respuesta en el historial
+        mensajes.append(mensaje_llm)
         
-        # Si NO pidió herramientas, ¡Terminó su trabajo y nos da la respuesta final!
         if not mensaje_llm.tool_calls:
             print("\n✅ ¡Respuesta Final Alcanzada!\n")
-            return mensaje_llm.content
+            contenido = mensaje_llm.content.strip()
             
-        # Si SÍ pidió herramientas, las ejecutamos
+            if contenido.startswith("```json"):
+                contenido = contenido[7:-3].strip()
+            elif contenido.startswith("```"):
+                contenido = contenido[3:-3].strip()
+                
+            try:
+                return json.loads(contenido)
+            except json.JSONDecodeError:
+                return {"error": "El modelo no devolvió un JSON válido", "texto_crudo": mensaje_llm.content}
+                
         for tool_call in mensaje_llm.tool_calls:
             nombre_funcion = tool_call.function.name
             argumentos = json.loads(tool_call.function.arguments)
-            print(f"   ⚙️  Ejecutando: {nombre_funcion} con argumentos {argumentos}")
+            print(f"   ⚙️  Ejecutando: {nombre_funcion} con args {argumentos}")
             
             if nombre_funcion in FUNCIONES:
                 resultado_python = FUNCIONES[nombre_funcion](**argumentos)
             else:
                 resultado_python = {"error": "Herramienta desconocida"}
                 
-            # Le pasamos el resultado crudo al modelo
             mensajes.append({
                 "role": "tool",
                 "tool_call_id": tool_call.id,
@@ -117,9 +140,7 @@ async def ejecutar_agente(ruta_imagen: str):
                 "content": json.dumps(resultado_python)
             })
 
-    return "⚠️ Error: Se superó el límite de iteraciones sin llegar a una conclusión."
-
-# --- PRUEBA LOCAL ---
+    return {"error": "Límite de iteraciones superado."}# --- PRUEBA LOCAL ---
 if __name__ == "__main__":
     import asyncio
     from pathlib import Path

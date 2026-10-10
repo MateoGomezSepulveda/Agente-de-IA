@@ -176,12 +176,12 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 - [x] `src/main.py`: recibe la ruta de una imagen (y opcionalmente una segunda) y muestra la respuesta.
 
 #### Día 5 - Dom 11 oct: Segunda foto, guardrails y cotización
-- [ ] Umbral de confianza: bajo el umbral con una sola foto → `necesita_otra_foto` indicando qué mostrar.
-- [ ] Máximo una foto extra; después de eso → `derivar_a_humano` con resumen del caso.
-- [ ] Formato de cotización: pieza, código, precio unitario, stock, total, alternativas.
-- [ ] Cálculos en Python, no en el LLM.
-- [ ] Reglas anti-alucinación: nunca inventar precios, códigos ni compatibilidades.
-- [ ] Casos: sin stock, múltiples candidatos, pieza no incluida en el catálogo, foto que no es una pieza.
+- [x] Umbral de confianza: bajo el umbral con una sola foto → `necesita_otra_foto` indicando qué mostrar.
+- [x] Máximo una foto extra; después de eso → `derivar_a_humano` con resumen del caso.
+- [x] Formato de cotización: pieza, código, precio unitario, stock, total, alternativas.
+- [x] Cálculos en Python, no en el LLM.
+- [x] Reglas anti-alucinación: nunca inventar precios, códigos ni compatibilidades.
+- [x] Casos: sin stock, múltiples candidatos, pieza no incluida en el catálogo, foto que no es una pieza.
 
 #### Día 6 - Lun 12 oct: Endurecimiento
 - [ ] Manejo de errores de API: `402` (sin créditos), `429` (límite), timeouts, reintentos acotados.
