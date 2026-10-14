@@ -1,53 +1,368 @@
 [
-    {
-        "id_repuesto": "REP-001",
-        "nombre": "Balatas Delanteras Cerámicas",
-        "atributos_visuales": [
-            "balatas",
-            "frenos",
-            "forma de media luna",
-            "cerámica",
-            "pastillas"
-        ],
-        "vehiculos_compatibles": [
-            {
-                "marca": "Honda",
-                "modelo": "Civic",
-                "anio_desde": 2016,
-                "anio_hasta": 2021
-            },
-            {
-                "marca": "Honda",
-                "modelo": "CR-V",
-                "anio_desde": 2017,
-                "anio_hasta": 2022
-            }
-        ]
-    },
-    {
-        "id_repuesto": "REP-002",
-        "nombre": "Filtro de Aceite Metálico",
-        "atributos_visuales": [
-            "filtro",
-            "aceite",
-            "cilindro",
-            "metálico",
-            "negro",
-            "rosca"
-        ],
-        "vehiculos_compatibles": [
-            {
-                "marca": "Toyota",
-                "modelo": "Corolla",
-                "anio_desde": 2014,
-                "anio_hasta": 2023
-            },
-            {
-                "marca": "Toyota",
-                "modelo": "Yaris",
-                "anio_desde": 2015,
-                "anio_hasta": 2023
-            }
-        ]
-    }
+  {
+    "id_repuesto": "REP-001",
+    "nombre": "Balatas Delanteras Cerámicas",
+    "codigo_oem": "45022-TBA-A00",
+    "atributos_visuales": ["balatas", "frenos", "pastillas", "media luna", "ceramica", "metalico"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021},
+      {"marca": "Honda", "modelo": "CR-V", "anio_desde": 2017, "anio_hasta": 2022}
+    ]
+  },
+  {
+    "id_repuesto": "REP-002",
+    "nombre": "Filtro de Aceite Metálico",
+    "codigo_oem": "90915-YZZD4",
+    "atributos_visuales": ["filtro", "aceite", "cilindro", "metalico", "rosca", "negro"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Corolla", "anio_desde": 2014, "anio_hasta": 2023},
+      {"marca": "Toyota", "modelo": "Yaris", "anio_desde": 2015, "anio_hasta": 2023}
+    ]
+  },
+  {
+    "id_repuesto": "REP-003",
+    "nombre": "Filtro de Aire de Motor",
+    "codigo_oem": "17801-0T020",
+    "atributos_visuales": ["filtro", "aire", "panel", "rectangular", "pliegues", "goma"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "RAV4", "anio_desde": 2013, "anio_hasta": 2018}
+    ]
+  },
+  {
+    "id_repuesto": "REP-004",
+    "nombre": "Bujía de Iridio",
+    "codigo_oem": "90919-01253",
+    "atributos_visuales": ["bujia", "iridio", "electrodo", "ceramica", "rosca", "blanca"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Camry", "anio_desde": 2012, "anio_hasta": 2017},
+      {"marca": "Lexus", "modelo": "ES350", "anio_desde": 2013, "anio_hasta": 2018}
+    ]
+  },
+  {
+    "id_repuesto": "REP-005",
+    "nombre": "Amortiguador Delantero",
+    "codigo_oem": "51605-TBA-A02",
+    "atributos_visuales": ["amortiguador", "suspension", "cilindro", "vastago", "resorte"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-006",
+    "nombre": "Disco de Freno Ventilado",
+    "codigo_oem": "45251-TBA-A00",
+    "atributos_visuales": ["disco", "freno", "rotor", "ventilado", "hierro", "circular"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021},
+      {"marca": "Honda", "modelo": "Accord", "anio_desde": 2018, "anio_hasta": 2022}
+    ]
+  },
+  {
+    "id_repuesto": "REP-007",
+    "nombre": "Bomba de Agua",
+    "codigo_oem": "16100-39416",
+    "atributos_visuales": ["bomba", "agua", "polea", "aluminio", "empaque", "impulsor"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Corolla", "anio_desde": 2009, "anio_hasta": 2013}
+    ]
+  },
+  {
+    "id_repuesto": "REP-008",
+    "nombre": "Banda de Distribución",
+    "codigo_oem": "13568-39016",
+    "atributos_visuales": ["banda", "distribucion", "dientes", "hule", "negro", "correa"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Corolla", "anio_desde": 2003, "anio_hasta": 2008}
+    ]
+  },
+  {
+    "id_repuesto": "REP-009",
+    "nombre": "Alternador 12V",
+    "codigo_oem": "27060-0H040",
+    "atributos_visuales": ["alternador", "polea", "ventilador", "conector", "aluminio", "electrico"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Hilux", "anio_desde": 2016, "anio_hasta": 2023}
+    ]
+  },
+  {
+    "id_repuesto": "REP-010",
+    "nombre": "Marcha / Motor de Arranque",
+    "codigo_oem": "28100-0C010",
+    "atributos_visuales": ["marcha", "arranque", "bendix", "solenoide", "electrico", "cilindrico"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Hilux", "anio_desde": 2012, "anio_hasta": 2015}
+    ]
+  },
+  {
+    "id_repuesto": "REP-011",
+    "nombre": "Radiador de Aluminio",
+    "codigo_oem": "16400-0T100",
+    "atributos_visuales": ["radiador", "aluminio", "panal", "tanques", "mangueras", "rectangular"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "RAV4", "anio_desde": 2013, "anio_hasta": 2018}
+    ]
+  },
+  {
+    "id_repuesto": "REP-012",
+    "nombre": "Termostato de Refrigerante",
+    "codigo_oem": "90916-03100",
+    "atributos_visuales": ["termostato", "refrigerante", "valvula", "resorte", "metalico", "pequeno"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Camry", "anio_desde": 2007, "anio_hasta": 2011}
+    ]
+  },
+  {
+    "id_repuesto": "REP-013",
+    "nombre": "Bomba de Gasolina",
+    "codigo_oem": "23220-0T040",
+    "atributos_visuales": ["bomba", "gasolina", "combustible", "filtro", "electrico", "cilindro"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Corolla", "anio_desde": 2014, "anio_hasta": 2019}
+    ]
+  },
+  {
+    "id_repuesto": "REP-014",
+    "nombre": "Inyector de Combustible",
+    "codigo_oem": "23250-28040",
+    "atributos_visuales": ["inyector", "combustible", "boquilla", "conector", "o-ring", "metalico"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Corolla", "anio_desde": 2009, "anio_hasta": 2013}
+    ]
+  },
+  {
+    "id_repuesto": "REP-015",
+    "nombre": "Sensor de Oxígeno",
+    "codigo_oem": "89465-02240",
+    "atributos_visuales": ["sensor", "oxigeno", "sonda", "cable", "rosca", "lambda"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Corolla", "anio_desde": 2014, "anio_hasta": 2019},
+      {"marca": "Toyota", "modelo": "Yaris", "anio_desde": 2015, "anio_hasta": 2020}
+    ]
+  },
+  {
+    "id_repuesto": "REP-016",
+    "nombre": "Bobina de Encendido",
+    "codigo_oem": "90919-02259",
+    "atributos_visuales": ["bobina", "encendido", "conector", "hule", "negro", "electrico"],
+    "vehiculos_compatibles": [
+      {"marca": "Toyota", "modelo": "Camry", "anio_desde": 2012, "anio_hasta": 2017}
+    ]
+  },
+  {
+    "id_repuesto": "REP-017",
+    "nombre": "Faro Delantero Izquierdo",
+    "codigo_oem": "81150-TBA-A01",
+    "atributos_visuales": ["faro", "delantero", "izquierdo", "mica", "transparente", "optica"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2018}
+    ]
+  },
+  {
+    "id_repuesto": "REP-018",
+    "nombre": "Calavera Trasera Derecha",
+    "codigo_oem": "81550-TBA-A01",
+    "atributos_visuales": ["calavera", "trasera", "derecha", "roja", "mica", "luz"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-019",
+    "nombre": "Espejo Lateral Izquierdo",
+    "codigo_oem": "76250-TBA-A21",
+    "atributos_visuales": ["espejo", "lateral", "izquierdo", "carcasa", "cristal", "electrico"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-020",
+    "nombre": "Parabrisas Laminado",
+    "codigo_oem": "73111-TBA-A00",
+    "atributos_visuales": ["parabrisas", "cristal", "laminado", "vidrio", "serigrafia", "grande"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-021",
+    "nombre": "Horquilla Inferior Delantera",
+    "codigo_oem": "51360-TBA-A01",
+    "atributos_visuales": ["horquilla", "suspension", "buje", "rotula", "acero", "brazo"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-022",
+    "nombre": "Terminal de Dirección",
+    "codigo_oem": "53540-TBA-A01",
+    "atributos_visuales": ["terminal", "direccion", "rotula", "rosca", "acero", "pequeno"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021},
+      {"marca": "Honda", "modelo": "Accord", "anio_desde": 2013, "anio_hasta": 2017}
+    ]
+  },
+  {
+    "id_repuesto": "REP-023",
+    "nombre": "Cremallera de Dirección",
+    "codigo_oem": "53601-TBA-A02",
+    "atributos_visuales": ["cremallera", "direccion", "hidraulica", "bota", "larga", "acero"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-024",
+    "nombre": "Bomba de Dirección Hidráulica",
+    "codigo_oem": "56110-TBA-A01",
+    "atributos_visuales": ["bomba", "direccion", "hidraulica", "polea", "aluminio", "deposito"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Accord", "anio_desde": 2008, "anio_hasta": 2012}
+    ]
+  },
+  {
+    "id_repuesto": "REP-025",
+    "nombre": "Balero de Rueda Delantero",
+    "codigo_oem": "44300-TBA-A51",
+    "atributos_visuales": ["balero", "rueda", "rodamiento", "cubo", "acero", "circular"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-026",
+    "nombre": "Kit de Clutch",
+    "codigo_oem": "31250-5AA-000",
+    "atributos_visuales": ["clutch", "disco", "plato", "collarín", "dientes", "embrague"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2006, "anio_hasta": 2011}
+    ]
+  },
+  {
+    "id_repuesto": "REP-027",
+    "nombre": "Volante de Motor",
+    "codigo_oem": "22100-5AA-000",
+    "atributos_visuales": ["volante", "motor", "cremallera", "dientes", "acero", "circular"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2006, "anio_hasta": 2011}
+    ]
+  },
+  {
+    "id_repuesto": "REP-028",
+    "nombre": "Soporte de Motor Derecho",
+    "codigo_oem": "50820-TBA-A02",
+    "atributos_visuales": ["soporte", "motor", "hule", "bracket", "aluminio", "derecho"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-029",
+    "nombre": "Maza de Rueda Trasera",
+    "codigo_oem": "42200-TBA-A01",
+    "atributos_visuales": ["maza", "rueda", "trasera", "birlos", "cubo", "acero"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-030",
+    "nombre": "Catalizador",
+    "codigo_oem": "18160-5AA-A00",
+    "atributos_visuales": ["catalizador", "escape", "panal", "ceramica", "bridas", "oxido"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2006, "anio_hasta": 2011}
+    ]
+  },
+  {
+    "id_repuesto": "REP-031",
+    "nombre": "Silenciador Trasero",
+    "codigo_oem": "18307-TBA-A00",
+    "atributos_visuales": ["silenciador", "escape", "mofle", "ovalado", "acero", "tubo"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-032",
+    "nombre": "Depósito de Anticongelante",
+    "codigo_oem": "19101-TBA-A00",
+    "atributos_visuales": ["deposito", "anticongelante", "plastico", "translucido", "tapa", "manguera"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-033",
+    "nombre": "Condensador de Aire Acondicionado",
+    "codigo_oem": "80110-TBA-A01",
+    "atributos_visuales": ["condensador", "aire", "acondicionado", "panal", "aluminio", "delgado"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-034",
+    "nombre": "Compresor de Aire Acondicionado",
+    "codigo_oem": "38810-5AA-A02",
+    "atributos_visuales": ["compresor", "aire", "acondicionado", "polea", "clutch", "aluminio"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2006, "anio_hasta": 2011}
+    ]
+  },
+  {
+    "id_repuesto": "REP-035",
+    "nombre": "Motor del Limpiaparabrisas",
+    "codigo_oem": "76505-TBA-A01",
+    "atributos_visuales": ["motor", "limpiaparabrisas", "brazo", "conector", "electrico", "negro"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2021}
+    ]
+  },
+  {
+    "id_repuesto": "REP-036",
+    "nombre": "Switch de Encendido",
+    "codigo_oem": "35130-TBA-A01",
+    "atributos_visuales": ["switch", "encendido", "llave", "cilindro", "conector", "plastico"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2016, "anio_hasta": 2018}
+    ]
+  },
+  {
+    "id_repuesto": "REP-037",
+    "nombre": "Sensor MAF",
+    "codigo_oem": "37980-RNA-A01",
+    "atributos_visuales": ["sensor", "maf", "flujo", "aire", "rejilla", "conector"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2006, "anio_hasta": 2011}
+    ]
+  },
+  {
+    "id_repuesto": "REP-038",
+    "nombre": "Cuerpo de Aceleración",
+    "codigo_oem": "16400-RNA-A01",
+    "atributos_visuales": ["cuerpo", "aceleracion", "mariposa", "aluminio", "conector", "circular"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2006, "anio_hasta": 2011}
+    ]
+  },
+  {
+    "id_repuesto": "REP-039",
+    "nombre": "Múltiple de Admisión",
+    "codigo_oem": "17100-RNA-A00",
+    "atributos_visuales": ["multiple", "admision", "plastico", "corredores", "empaque", "negro"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2006, "anio_hasta": 2011}
+    ]
+  },
+  {
+    "id_repuesto": "REP-040",
+    "nombre": "Tapa de Punterías",
+    "codigo_oem": "12310-RNA-A00",
+    "atributos_visuales": ["tapa", "punterias", "aluminio", "empaque", "tornillos", "valvulas"],
+    "vehiculos_compatibles": [
+      {"marca": "Honda", "modelo": "Civic", "anio_desde": 2006, "anio_hasta": 2011}
+    ]
+  }
 ]

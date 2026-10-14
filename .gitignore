@@ -13,8 +13,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.pytest_cache/
 
 # IDEs y logs locales
 .vscode/
 .idea/
 *.log
+logs/

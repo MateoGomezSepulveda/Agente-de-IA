@@ -184,8 +184,8 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 - [x] Casos: sin stock, múltiples candidatos, pieza no incluida en el catálogo, foto que no es una pieza.
 
 #### Día 6 - Lun 12 oct: Endurecimiento
-- [ ] Manejo de errores de API: `402` (sin créditos), `429` (límite), timeouts, reintentos acotados.
-- [ ] Validación de imágenes inválidas (archivo corrupto, formato no soportado, demasiado grande).
+- [x] Manejo de errores de API: `402` (sin créditos), `429` (límite), timeouts, reintentos acotados.
+- [x] Validación de imágenes inválidas (archivo corrupto, formato no soportado, demasiado grande).
 - [ ] Revisión del log: se puede reconstruir cada tarea paso a paso.
 - [ ] Pruebas con 10 fotos con respuesta conocida.
 - [ ] `README.md` v1 (instalación, variables, ejemplo de uso).
