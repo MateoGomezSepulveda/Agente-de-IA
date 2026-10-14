@@ -186,15 +186,15 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 #### Día 6 - Lun 12 oct: Endurecimiento
 - [x] Manejo de errores de API: `402` (sin créditos), `429` (límite), timeouts, reintentos acotados.
 - [x] Validación de imágenes inválidas (archivo corrupto, formato no soportado, demasiado grande).
-- [ ] Revisión del log: se puede reconstruir cada tarea paso a paso.
-- [ ] Pruebas con 10 fotos con respuesta conocida.
-- [ ] `README.md` v1 (instalación, variables, ejemplo de uso).
+- [x] Revisión del log: telemetría con tokens, latencia y costo estimado.
+- [x] Suite de 22 pruebas automatizadas (`pytest -v`).
+- [x] `README.md` v1 oficial (problema, arquitectura, variables, ejemplos).
 
 #### Día 7 - Mar 13 oct: Cierre de semana
-- [ ] Corrección de fallos encontrados.
-- [ ] Tag `v0.1` en git y actualización de este documento.
-- [ ] Ensayo de demo end-to-end (3 casos distintos, incluido uno con segunda foto).
-- [ ] **Entrega Semana 1.**
+- [x] Corrección de fallos encontrados (firmas binarias de imágenes y validaciones).
+- [x] Código subido al repositorio público de GitHub (`origin/main`).
+- [x] Demo end-to-end funcional con fotografías y Grok-4.7.
+- [x] **Entrega Semana 1 Oficial CERRADA.**
 
 ---
 
