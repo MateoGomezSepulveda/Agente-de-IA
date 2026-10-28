@@ -1,0 +1,964 @@
+{
+  "total_ejecuciones_validadas": 10,
+  "modelo": "grok-4.7",
+  "promedio_latencia_seg": 13.37,
+  "promedio_tokens": 7366.5,
+  "costo_total_10_ejecuciones_usd": 0.045786,
+  "ejecuciones": [
+    {
+      "timestamp": "2026-10-14T15:10:02",
+      "tarea_id": "tarea_4086b66c",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 4537,
+      "completion_tokens": 253,
+      "total_tokens": 4790,
+      "latencia_segundos": 9.21,
+      "costo_estimado_usd": 0.003026,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "bateria hibrida",
+              "caja metalica rectangular",
+              "cables naranja alto voltaje",
+              "inversor",
+              "aluminio"
+            ]
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 9,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-007",
+              "nombre": "Bomba de Agua",
+              "codigo_oem": "16100-39416",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "Corolla",
+                  "anio_desde": 2009,
+                  "anio_hasta": 2013
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-009",
+              "nombre": "Alternador 12V",
+              "codigo_oem": "27060-0H040",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "Hilux",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2023
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-011",
+              "nombre": "Radiador de Aluminio",
+              "codigo_oem": "16400-0T100",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "RAV4",
+                  "anio_desde": 2013,
+                  "anio_hasta": 2018
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-024",
+              "nombre": "Bomba de Dirección Hidráulica",
+              "codigo_oem": "56110-TBA-A01",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Accord",
+                  "anio_desde": 2008,
+                  "anio_hasta": 2012
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-028",
+              "nombre": "Soporte de Motor Derecho",
+              "codigo_oem": "50820-TBA-A02",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-14T15:16:31",
+      "tarea_id": "tarea_7357be77",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 4695,
+      "completion_tokens": 217,
+      "total_tokens": 4912,
+      "latencia_segundos": 16.88,
+      "costo_estimado_usd": 0.003077,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "caja de cambios",
+              "transmision",
+              "carcasa aluminio",
+              "engranes helicoidales",
+              "diferencial",
+              "flecha",
+              "campana"
+            ]
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 0,
+          "candidatos": [],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-14T15:17:08",
+      "tarea_id": "tarea_c2a4a817",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 9343,
+      "completion_tokens": 303,
+      "total_tokens": 9646,
+      "latencia_segundos": 11.52,
+      "costo_estimado_usd": 0.005969,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "balatas",
+              "pastillas de freno",
+              "disco",
+              "metal",
+              "orejas con orificio",
+              "material de friccion cafe",
+              "indicador de desgaste"
+            ]
+          }
+        },
+        {
+          "herramienta": "consultar_inventario",
+          "argumentos": {
+            "id_repuesto": "REP-001"
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 6,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-001",
+              "nombre": "Balatas Delanteras Cerámicas",
+              "codigo_oem": "45022-TBA-A00",
+              "coincidencias": 2,
+              "atributos_que_coinciden": [
+                "balatas",
+                "metal"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                },
+                {
+                  "marca": "Honda",
+                  "modelo": "CR-V",
+                  "anio_desde": 2017,
+                  "anio_hasta": 2022
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-002",
+              "nombre": "Filtro de Aceite Metálico",
+              "codigo_oem": "90915-YZZD4",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "metal"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "Corolla",
+                  "anio_desde": 2014,
+                  "anio_hasta": 2023
+                },
+                {
+                  "marca": "Toyota",
+                  "modelo": "Yaris",
+                  "anio_desde": 2015,
+                  "anio_hasta": 2023
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-006",
+              "nombre": "Disco de Freno Ventilado",
+              "codigo_oem": "45251-TBA-A00",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "disco"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                },
+                {
+                  "marca": "Honda",
+                  "modelo": "Accord",
+                  "anio_desde": 2018,
+                  "anio_hasta": 2022
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-012",
+              "nombre": "Termostato de Refrigerante",
+              "codigo_oem": "90916-03100",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "metal"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "Camry",
+                  "anio_desde": 2007,
+                  "anio_hasta": 2011
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-014",
+              "nombre": "Inyector de Combustible",
+              "codigo_oem": "23250-28040",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "metal"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "Corolla",
+                  "anio_desde": 2009,
+                  "anio_hasta": 2013
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        },
+        {
+          "id_repuesto": "REP-001",
+          "precio_unitario": 850.5,
+          "stock": 12,
+          "ubicacion": "Pasillo 4, Estante B"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-14T15:17:44",
+      "tarea_id": "tarea_9aeb387c",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 9255,
+      "completion_tokens": 265,
+      "total_tokens": 9520,
+      "latencia_segundos": 10.63,
+      "costo_estimado_usd": 0.005871,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "balatas",
+              "pastillas de freno",
+              "ceramica",
+              "placa metalica negra",
+              "par",
+              "orejas de montaje"
+            ]
+          }
+        },
+        {
+          "herramienta": "consultar_inventario",
+          "argumentos": {
+            "id_repuesto": "REP-001"
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 6,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-001",
+              "nombre": "Balatas Delanteras Cerámicas",
+              "codigo_oem": "45022-TBA-A00",
+              "coincidencias": 2,
+              "atributos_que_coinciden": [
+                "balatas",
+                "ceramica"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                },
+                {
+                  "marca": "Honda",
+                  "modelo": "CR-V",
+                  "anio_desde": 2017,
+                  "anio_hasta": 2022
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-004",
+              "nombre": "Bujía de Iridio",
+              "codigo_oem": "90919-01253",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "ceramica"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "Camry",
+                  "anio_desde": 2012,
+                  "anio_hasta": 2017
+                },
+                {
+                  "marca": "Lexus",
+                  "modelo": "ES350",
+                  "anio_desde": 2013,
+                  "anio_hasta": 2018
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-017",
+              "nombre": "Faro Delantero Izquierdo",
+              "codigo_oem": "81150-TBA-A01",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "par"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2018
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-020",
+              "nombre": "Parabrisas Laminado",
+              "codigo_oem": "73111-TBA-A00",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "par"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-030",
+              "nombre": "Catalizador",
+              "codigo_oem": "18160-5AA-A00",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "ceramica"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2006,
+                  "anio_hasta": 2011
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        },
+        {
+          "id_repuesto": "REP-001",
+          "precio_unitario": 850.5,
+          "stock": 12,
+          "ubicacion": "Pasillo 4, Estante B"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-14T15:18:00",
+      "tarea_id": "tarea_e3d4cc42",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 8431,
+      "completion_tokens": 288,
+      "total_tokens": 8719,
+      "latencia_segundos": 10.65,
+      "costo_estimado_usd": 0.005404,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "balatas",
+              "pastillas de freno",
+              "material de friccion gris con particulas metalicas",
+              "placa de respaldo negra",
+              "orejas de montaje con orificio",
+              "gancho lateral"
+            ]
+          }
+        },
+        {
+          "herramienta": "consultar_inventario",
+          "argumentos": {
+            "id_repuesto": "REP-001"
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 1,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-001",
+              "nombre": "Balatas Delanteras Cerámicas",
+              "codigo_oem": "45022-TBA-A00",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "balatas"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                },
+                {
+                  "marca": "Honda",
+                  "modelo": "CR-V",
+                  "anio_desde": 2017,
+                  "anio_hasta": 2022
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        },
+        {
+          "id_repuesto": "REP-001",
+          "precio_unitario": 850.5,
+          "stock": 12,
+          "ubicacion": "Pasillo 4, Estante B"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-14T15:18:55",
+      "tarea_id": "tarea_5ec116c5",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 12135,
+      "completion_tokens": 299,
+      "total_tokens": 12434,
+      "latencia_segundos": 14.8,
+      "costo_estimado_usd": 0.00764,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "balatas",
+              "freno",
+              "disco",
+              "pastillas",
+              "metalica",
+              "ranuras",
+              "orejas",
+              "indicador desgaste"
+            ]
+          }
+        },
+        {
+          "herramienta": "consultar_inventario",
+          "argumentos": {
+            "id_repuesto": "REP-001"
+          }
+        },
+        {
+          "herramienta": "generar_cotizacion",
+          "argumentos": {
+            "id_repuesto": "REP-001",
+            "cantidad": 1
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 3,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-001",
+              "nombre": "Balatas Delanteras Cerámicas",
+              "codigo_oem": "45022-TBA-A00",
+              "coincidencias": 3,
+              "atributos_que_coinciden": [
+                "balatas",
+                "freno",
+                "pastillas"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                },
+                {
+                  "marca": "Honda",
+                  "modelo": "CR-V",
+                  "anio_desde": 2017,
+                  "anio_hasta": 2022
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-006",
+              "nombre": "Disco de Freno Ventilado",
+              "codigo_oem": "45251-TBA-A00",
+              "coincidencias": 2,
+              "atributos_que_coinciden": [
+                "disco",
+                "freno"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                },
+                {
+                  "marca": "Honda",
+                  "modelo": "Accord",
+                  "anio_desde": 2018,
+                  "anio_hasta": 2022
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-026",
+              "nombre": "Kit de Clutch",
+              "codigo_oem": "31250-5AA-000",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "disco"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2006,
+                  "anio_hasta": 2011
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        },
+        {
+          "id_repuesto": "REP-001",
+          "precio_unitario": 850.5,
+          "stock": 12,
+          "ubicacion": "Pasillo 4, Estante B"
+        },
+        {
+          "tarea_id": "tarea_5ec116c5",
+          "id_repuesto": "REP-001",
+          "cantidad": 1,
+          "precio_unitario": 850.5,
+          "stock": 12,
+          "ubicacion": "Pasillo 4, Estante B",
+          "total": 850.5,
+          "cotizacion_id": 1
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-27T23:59:13",
+      "tarea_id": "tarea_f18d2114",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 5181,
+      "completion_tokens": 231,
+      "total_tokens": 5412,
+      "latencia_segundos": 15.16,
+      "costo_estimado_usd": 0.003386,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "transmision",
+              "caja de cambios",
+              "engranajes",
+              "aluminio",
+              "diferencial",
+              "desarmada"
+            ]
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 9,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-007",
+              "nombre": "Bomba de Agua",
+              "codigo_oem": "16100-39416",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "Corolla",
+                  "anio_desde": 2009,
+                  "anio_hasta": 2013
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-009",
+              "nombre": "Alternador 12V",
+              "codigo_oem": "27060-0H040",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "Hilux",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2023
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-011",
+              "nombre": "Radiador de Aluminio",
+              "codigo_oem": "16400-0T100",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "RAV4",
+                  "anio_desde": 2013,
+                  "anio_hasta": 2018
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-024",
+              "nombre": "Bomba de Dirección Hidráulica",
+              "codigo_oem": "56110-TBA-A01",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Accord",
+                  "anio_desde": 2008,
+                  "anio_hasta": 2012
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-028",
+              "nombre": "Soporte de Motor Derecho",
+              "codigo_oem": "50820-TBA-A02",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "aluminio"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-28T00:54:11",
+      "tarea_id": "tarea_ec74af7d",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 4241,
+      "completion_tokens": 258,
+      "total_tokens": 4499,
+      "latencia_segundos": 23.85,
+      "costo_estimado_usd": 0.002854,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "bateria",
+              "hibrida",
+              "alto voltaje",
+              "cables naranjas",
+              "carcasa aluminio",
+              "rectangular"
+            ]
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 2,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-003",
+              "nombre": "Filtro de Aire de Motor",
+              "codigo_oem": "17801-0T020",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "rectangular"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "RAV4",
+                  "anio_desde": 2013,
+                  "anio_hasta": 2018
+                }
+              ]
+            },
+            {
+              "id_repuesto": "REP-011",
+              "nombre": "Radiador de Aluminio",
+              "codigo_oem": "16400-0T100",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "rectangular"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Toyota",
+                  "modelo": "RAV4",
+                  "anio_desde": 2013,
+                  "anio_hasta": 2018
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-28T00:54:22",
+      "tarea_id": "tarea_3550cbf6",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 8411,
+      "completion_tokens": 293,
+      "total_tokens": 8704,
+      "latencia_segundos": 10.39,
+      "costo_estimado_usd": 0.005398,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "balatas",
+              "pastillas de freno",
+              "placa metalica negra",
+              "material de friccion gris",
+              "ranuras",
+              "orejas con orificio"
+            ]
+          }
+        },
+        {
+          "herramienta": "consultar_inventario",
+          "argumentos": {
+            "id_repuesto": "REP-001"
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 1,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-001",
+              "nombre": "Balatas Delanteras Cerámicas",
+              "codigo_oem": "45022-TBA-A00",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "balatas"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                },
+                {
+                  "marca": "Honda",
+                  "modelo": "CR-V",
+                  "anio_desde": 2017,
+                  "anio_hasta": 2022
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        },
+        {
+          "id_repuesto": "REP-001",
+          "precio_unitario": 850.5,
+          "stock": 12,
+          "ubicacion": "Pasillo 4, Estante B"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-28T00:54:33",
+      "tarea_id": "tarea_e0fdce27",
+      "modelo": "grok-4.7",
+      "prompt_tokens": 4790,
+      "completion_tokens": 239,
+      "total_tokens": 5029,
+      "latencia_segundos": 10.64,
+      "costo_estimado_usd": 0.003161,
+      "tarifa": "provisional",
+      "herramientas": [
+        {
+          "herramienta": "buscar_en_catalogo",
+          "argumentos": {
+            "palabras_clave": [
+              "transmision",
+              "diferencial",
+              "engranes",
+              "carcasa",
+              "flecha",
+              "caja de velocidades",
+              "desarmada"
+            ]
+          }
+        }
+      ],
+      "resultado_herramientas": [
+        {
+          "total": 1,
+          "candidatos": [
+            {
+              "id_repuesto": "REP-019",
+              "nombre": "Espejo Lateral Izquierdo",
+              "codigo_oem": "76250-TBA-A21",
+              "coincidencias": 1,
+              "atributos_que_coinciden": [
+                "carcasa"
+              ],
+              "vehiculos_compatibles": [
+                {
+                  "marca": "Honda",
+                  "modelo": "Civic",
+                  "anio_desde": 2016,
+                  "anio_hasta": 2021
+                }
+              ]
+            }
+          ],
+          "aviso": "Vehículos tomados de la tabla de compatibilidad del catálogo."
+        }
+      ]
+    }
+  ]
+}

@@ -9,17 +9,16 @@ Agente autónomo para almacenes de autopartes. **Entrada: una fotografía de la 
 **Meta de calidad:** entregar algo de nivel profesional: funcional end-to-end, medido con datos, con costo por tarea conocido y probado a escala (1,000 unidades en 12 horas).
 
 ## 2. Entregas del reto y calendario
-Inicio: **miércoles 7 de octubre de 2026**. Las fechas por semana son una suposición (semanas de 7 días corridos desde el inicio) y deben confirmarse con Platica.
+Inicio: **miércoles 7 de octubre de 2026**. Calendario actualizado con los lineamientos oficiales de Platica para la Semana 2 (fecha límite oficial S2: **sábado 24 de octubre, 23:59 CDMX**; actualmente en **Sprint de Cierre Inmediato S2** al 28 de octubre).
 
-| Semana | Fechas (supuestas) | Entrega oficial | Meta interna (nos adelantamos) |
+| Semana | Fecha límite oficial | Entregables oficiales exigidos por Platica | Estado actual |
 |---|---|---|---|
-| 1 | 7 - 13 oct | Agente corriendo end-to-end | Agente completo el **sáb 10 oct**; 11-13 para endurecer y probar |
-| 2 | 14 - 20 oct | 3 herramientas + video de 2 min | Herramientas listas el **jue 15 oct**; video grabado el **sáb 17 oct** |
-| 3 | 21 - 27 oct | Datos reales, evaluación propia y costo por tarea | Dataset y evaluación listos el **sáb 24 oct**; ensayo de carga el 26-27 |
-| 4 | 28 oct - 3 nov | Semana de carga: 1,000 unidades en 12 horas | Corrida real el **vie 30 oct** (dejando 4 días de colchón por si hay que repetirla) |
-| Final | ~3 nov | Entrega final | Paquete completo el **lun 2 nov** |
+| **S1** | Sáb 17 oct | • Agente funcionando de punta a punta con Grok<br>• Uso de la llave del reto<br>• Repositorio público<br>• README explicando claramente el problema | ✅ **APROBADO / COMPLETADO** |
+| **S2** | Sáb 24 oct (23:59 CDMX) | • Al menos 3 herramientas reales<br>• Manejo de errores<br>• 10 ejecuciones reales del agente<br>• Video de 2 minutos mostrando el agente funcionando | 🚀 **EN CIERRE INMEDIATO (28 oct)** |
+| **S3** | Sáb 31 oct (estimado) | Datos reales, evaluación propia y costo por tarea | Pendiente |
+| **S4 / Final** | Noviembre | Semana de carga (1,000 unidades en 12 horas) y paquete final | Pendiente |
 
-**Estrategia:** el trabajo de cada semana se termina antes de su fecha de entrega. Los días sobrantes se usan para pruebas, correcciones y ensayo, no para empezar tarde.
+**Estrategia actual (Plan de Choque S2):** Aprovechar que las 3 herramientas reales y el manejo de errores ya fueron adelantados en el código durante la Semana 1 para cerrar hoy mismo las **10 ejecuciones reales**, actualizar el **README de S2** y grabar el **video de 2 minutos**.
 
 ## 3. Stack técnico
 | Componente | Decisión |
@@ -162,11 +161,11 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 - [x] Tests en `tests/` con casos normales y borde.
 
 #### Día 3 - Vie 9 oct: Bucle del agente con LLM simulado (sin créditos)
-- [ ] `src/llm_mock.py`: cliente falso que devuelve respuestas y `tool_calls` predefinidos.
-- [ ] `src/agent.py`: bucle de tool calling con límite de iteraciones, manejo de errores de herramienta y validación del formato de respuesta (sección 4.4).
-- [ ] `src/tracking.py`: registrar por tarea herramientas, tokens (`usage`), latencia y resultado.
-- [ ] Test del bucle completo usando el mock.
-- [ ] **Si ya hay créditos:** verificar tool calling real con 1 petición mínima. Plan B: el modelo responde JSON y el código lo interpreta como acción.
+- [x] `src/llm_mock.py`: cliente falso que devuelve respuestas y `tool_calls` predefinidos.
+- [x] `src/agent.py`: bucle de tool calling con límite de iteraciones, manejo de errores de herramienta y validación del formato de respuesta (sección 4.4).
+- [x] `src/tracking.py`: registrar por tarea herramientas, tokens (`usage`), latencia y resultado.
+- [x] Test del bucle completo usando el mock.
+- [x] **Si ya hay créditos:** verificar tool calling real con 1 petición mínima. Plan B: el modelo responde JSON y el código lo interpreta como acción.
 
 #### Día 4 - Sáb 10 oct: Visión (ruta crítica) y primer end-to-end real
 - [x] **Primero:** verificar visión con 1 imagen pequeña. Si no hay visión disponible, escalar con Platica ese mismo día.
@@ -198,48 +197,42 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 
 ---
 
-### SEMANA 2 (14-20 oct): 3 herramientas + video de 2 minutos
-**Definition of Done:** tres herramientas robustas, documentadas y con pruebas; video de ~2 min que muestre el agente resolviendo casos reales.
+### SEMANA 2 (Fecha límite oficial: Sáb 24 oct 23:59 CDMX — Sprint de Cierre 28 oct)
+**Definition of Done Oficial (Platica):** Tener S1 aprobado al 100% y entregar los 4 pilares oficiales de S2: al menos 3 herramientas reales, manejo de errores robusto, 10 ejecuciones reales del agente registradas y un video de 2 minutos mostrando el agente funcionando.
 
-**Las 3 herramientas (propuesta, por confirmar con los requisitos del reto):**
-1. `buscar_en_catalogo`: búsqueda semántica sobre atributos visuales + compatibilidad de vehículos.
-2. `consultar_inventario`: stock, precio y ubicación desde SQLite.
-3. `generar_cotizacion`: calcula totales y alternativas, y guarda la cotización.
+#### ✅ Bloque 0: Requisitos S1 Aprobado (Verificación de Base)
+- [x] **Agente funcionando de punta a punta con Grok** (`src/agent.py` + `src/main.py` con visión y tool calling en `grok-4.7`).
+- [x] **Uso de la llave del reto** (Configuración en `.env` apuntando a `https://api.reto.pltk.mx/v1`).
+- [x] **Repositorio público** (Publicado y sincronizado en GitHub `MateoGomezSepulveda/Agente-de-IA`).
+- [x] **README explicando claramente el problema** (`README.md` documentado con arquitectura y flujo).
 
-#### Día 8 - Mié 14 oct: RAG sobre atributos visuales
-- [ ] **Verificar embeddings** en el endpoint de Platica.
-- [ ] Opción A (si hay embeddings): embeddings de las descripciones del catálogo; la descripción generada por la visión se compara por similitud.
-- [ ] Opción B (si no): base vectorial local (por ejemplo ChromaDB con embeddings locales) o, como mínimo viable, palabras clave + filtros.
-- [ ] Devolver top-N candidatos con puntaje y sus vehículos compatibles.
-- [ ] Prueba: descripciones imprecisas generadas desde fotos devuelven el repuesto correcto.
+#### 🛠️ Bloque 1: Al menos 3 herramientas reales (S2 Entregable 1)
+Las 3 herramientas deterministas ya están implementadas en `src/tools.py` y conectadas a datos reales (`data/catalogo.json` y `data/inventario.db`):
+1. `buscar_en_catalogo(palabras_clave)`: normaliza texto, filtra por atributos visuales y devuelve candidatos con su tabla de compatibilidad vehicular.
+2. `consultar_inventario(id_repuesto)`: consulta parametrizada en SQLite (`inventario.db`) para obtener stock, precio unitario y ubicación física en almacén.
+3. `generar_cotizacion(id_repuesto, cantidad, tarea_id)`: valida disponibilidad de stock, calcula el total en Python y persiste el registro en la tabla `cotizaciones` de SQLite.
+- [x] Implementar y conectar las 3 herramientas reales en `src/tools.py` y `src/db.py`.
+- [x] Esquemas JSON (`ESQUEMAS_TOOLS`) compatibles con Tool Calling de OpenAI/Grok.
+- [x] Pruebas unitarias en `tests/test_tools.py`.
+- [x] Documentar tabla técnica de las 3 herramientas (entradas, salidas y validaciones) en `README.md`.
 
-#### Día 9 - Jue 15 oct: Herramientas finales
-- [ ] Terminar las 3 herramientas con validación de entradas, errores claros y esquemas pulidos.
-- [ ] `generar_cotizacion` con persistencia (tabla `cotizaciones`).
-- [ ] Pruebas unitarias y de integración por herramienta.
-- [ ] Documentar cada herramienta (entrada, salida, errores) en el README.
+#### 🛡️ Bloque 2: Manejo de errores (S2 Entregable 2)
+Sistema multicapa de resiliencia y prevención de fallos:
+- [x] **Errores de API y Red (`src/agent.py`):** Captura de `402` (sin créditos, corte inmediato sin gastar reintentos), `429` (`RateLimitError` con backoff exponencial), `APITimeoutError`, `AuthenticationError` y `APIConnectionError`.
+- [x] **Errores de Herramientas y Datos (`src/tools.py`, `src/db.py`):** Validación de argumentos no JSON, repuestos inexistentes (`REP-999`), piezas sin stock (`REP-037`), cantidades fuera de rango (`1..99`) y errores de SQLite.
+- [x] **Errores de Entrada Visual (`src/vision.py`):** Validación de existencia de archivo, tamaño máximo, extensión y firmas binarias (*magic bytes* para JPG/PNG/WEBP).
+- [x] **Guardrail Anti-Alucinaciones (`validar_respuesta` en `src/agent.py`):** Rechazo automático si el modelo inventa precios, altera totales, modifica la tabla de compatibilidad o intenta pedir una 3ra foto (derivación segura a `derivar_a_humano`).
+- [x] Documentar sección dedicada de **Manejo de Errores** en `README.md`.
 
-#### Día 10 - Vie 16 oct: Calidad del agente
-- [ ] Afinar System Prompt y descripciones de herramientas con base en los fallos observados.
-- [ ] Pruebas de estrés: fotos borrosas, mal iluminadas, ángulos difíciles, piezas inexistentes en el catálogo.
-- [ ] Revisar que el agente elija la herramienta correcta y en el orden correcto.
+#### 📊 Bloque 3: 10 ejecuciones reales del agente (S2 Entregable 3)
+Evidencia auditable de 10 corridas reales contra el endpoint de Platica (`grok-4.7`):
+- [x] Crear script `scripts/completar_10_ejecuciones.py` para correr y consolidar **10 ejecuciones reales** con casos variados (cotización exitosa, segunda foto, derivación a humano / pieza fuera de catálogo).
+- [x] Registrar las 10 ejecuciones reales tanto en `logs/consumo.jsonl` (tokens, latencia, costo, traza de herramientas) como en un reporte legible `resultados/ejecuciones_s2.json` y resumen en `README.md` para revisión directa de los jueces.
 
-#### Día 11 - Sáb 17 oct: Video, guion y grabación
-- [ ] Guion (estructura sugerida, 2:00): problema (0:15), solución y arquitectura (0:25), demo en vivo con 2 casos, uno con segunda foto (1:00), resultados/cierre (0:20).
-- [ ] Preparar 2-3 casos de demo que funcionen de forma confiable.
-- [ ] Grabar pantalla con voz; ensayar mínimo 3 veces antes.
-
-#### Día 12 - Dom 18 oct: Edición del video
-- [ ] Edición: cortes, subtítulos, zoom a las partes clave, duración final ≤ 2:00.
-- [ ] Revisión crítica: ¿se entiende sin explicación adicional?
-
-#### Día 13 - Lun 19 oct: Interfaz opcional y pulido
-- [ ] (Opcional) Interfaz web simple (Gradio o Streamlit) para subir fotos.
-- [ ] Actualizar README y diagrama de arquitectura.
-
-#### Día 14 - Mar 20 oct: Cierre de semana
-- [ ] Tag `v0.2`, actualización de este documento.
-- [ ] **Entrega Semana 2.**
+#### 🎬 Bloque 4: Video mostrando el agente funcionando (S2 Entregable 4)
+- [x] Definir estructura de demostración completa (S1 + S2, herramientas, manejo de errores, pruebas y 10 ejecuciones).
+- [ ] Grabar pantalla con voz mostrando el flujo completo y publicar enlace / archivo para la entrega.
+- [ ] Commit final de Semana 2, `git push origin main` y tag `v0.2`.
 
 ---
 
@@ -393,3 +386,4 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 | 2026-10-08 | Vehículo como resultado, desde tabla de compatibilidad del catálogo | Evitar alucinaciones de compatibilidad |
 | 2026-10-08 | Segunda foto como estado de la respuesta (máx. 1), no como herramienta | Conservar las 3 herramientas del reto |
 | 2026-10-08 | Set de carga de 1,000 unidades a partir de 100-150 fotos reales con variaciones, declarado en el reporte | No hay 1,000 fotos reales distintas; por confirmar con Platica |
+| 2026-10-28 | Actualización del Roadmap para Entrega Oficial S2 (3 herramientas reales, manejo de errores, 10 ejecuciones reales y video de 2 min) | Alinear el plan de cierre inmediato con los criterios publicados por Platica para la Semana 2 |
