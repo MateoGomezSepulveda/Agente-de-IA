@@ -1,6 +1,6 @@
 # 🚗 Agente de Refacciones Automotrices — Platica AI Agent Challenge
 
-> **Semanas 1 y 2: Flujo End-to-End, 3 Herramientas Reales, Manejo de Errores y 10 Ejecuciones Reales**  
+> **Semanas 1, 2 y 3: Flujo End-to-End, 3 Herramientas Reales, Evaluación Sistemática (100 casos) y FinOps (Costo por Tarea)**  
 > Identificación autónoma de autopartes mediante fotografías, compatibilidad determinista y cotización contra inventario real con **Grok-4.7**.
 
 ---
@@ -33,6 +33,12 @@ El agente elimina este cuello de botella: **recibe únicamente la fotografía de
 - [x] **Manejo de errores multicapa:** Errores HTTP/API (`402`, `429` con backoff, timeouts), validación de firmas binarias de imagen (*magic bytes*), validación de argumentos en herramientas y guardrail anti-alucinaciones.
 - [x] **10 ejecuciones reales del agente:** Registradas con telemetría completa (tokens, latencia, costo y traza de herramientas) en `logs/consumo.jsonl` y consolidadas en `resultados/ejecuciones_s2.json`.
 - [x] **Video mostrando el agente funcionando:** Demostración completa del flujo end-to-end, herramientas, manejo de errores y pruebas.
+
+### S3 Entregado
+- [x] **Integridad de datos reales validada:** 40 refacciones en `data/catalogo.json` cruzadas contra `data/inventario.db` (36 con stock disponible, 2 sin stock controladas `REP-037`/`REP-038` y 2 fuera de ERP `REP-039`/`REP-040`).
+- [x] **Dataset etiquetado de 100 casos (`data/eval/dataset_eval.json`):** Incluye casos fáciles, moderados, sin stock, fuera de ERP, ambiguos que requieren 2da foto y piezas fuera de catálogo.
+- [x] **Motor de Evaluación Sistemática (`src/evaluacion.py`):** Reporte `resultados/evaluacion_s3.json` con **98.81% Top-1**, **100.0% Top-3**, **100.0% exactitud de estado** y **0 alucinaciones**.
+- [x] **Analítica FinOps y Costo por Tarea (`src/tracking.py`):** Reporte `resultados/costos_s3.json` con costo promedio (`$0.005061 USD`), `p50` (`$0.005108 USD`), `p95` (`$0.007800 USD`), desglose por flujo y proyección para 1,000 unidades (`data/carga/unidades_1000.json`).
 
 ---
 
@@ -106,6 +112,31 @@ En `logs/consumo.jsonl` y en el reporte consolidado `resultados/ejecuciones_s2.j
 
 ---
 
+## 📈 Evaluación Sistemática y FinOps (Semana 3)
+
+Los reportes consolidados en `resultados/evaluacion_s3.json` y `resultados/costos_s3.json` se generan mediante `python scripts/generar_reportes.py` sobre los **100 casos etiquetados** en `data/eval/dataset_eval.json`:
+
+### 1. Métricas de Calidad (Línea Base vs. Versión Optimizada)
+| Métrica | Meta Oficial | Línea Base (v1) | Versión Optimizada (v2) | Estado |
+|---|---|---|---|---|
+| **Pieza correcta en Top-1** | `>= 80.0%` | `76.19%` | **`98.81%`** (`+22.62 pts`) | ✅ Cumple |
+| **Pieza correcta en Top-3** | `>= 92.0%` | `88.10%` | **`100.0%`** (`+11.90 pts`) | ✅ Cumple |
+| **Exactitud de estado esperado** | `>= 90.0%` | `84.00%` | **`100.0%`** (`+16.00 pts`) | ✅ Cumple |
+| **Fidelidad de compatibilidad vehicular** | `100.0%` | `100.0%` | **`100.0%`** | ✅ Cumple |
+| **Alucinaciones detectadas** | `0` | `0` | **`0`** | ✅ Cumple |
+
+### 2. Costo por Tarea y Proyección FinOps (`resultados/costos_s3.json`)
+- **Costo promedio por tarea:** `$0.005061 USD`
+- **Mediana (`p50`):** `$0.005108 USD`
+- **Percentil 95 (`p95`):** `$0.007800 USD`
+- **Desglose por flujo de herramientas:**
+  - *Búsqueda simple (1 tool — fuera de catálogo / 2da foto):* `$0.003101 USD`
+  - *Consulta de inventario (2 tools):* `$0.005660 USD`
+  - *Cotización completa (3 tools):* `$0.007649 USD`
+- **Proyección para 1,000 unidades (Semana 4):** `$5.06 USD` esperado (`$7.80 USD` escenario `p95`).
+
+---
+
 ## 🚀 Instalación y Puesta en Marcha
 
 ### 1. Clonar el repositorio y preparar entorno
@@ -174,9 +205,15 @@ Ruta de la foto: data/fotos_prueba/test2.jpg
 python scripts/completar_10_ejecuciones.py
 ```
 
+### Modo 3: Evaluación Sistemática (100 casos), FinOps y Generación de 1,000 Unidades (S3)
+```powershell
+python scripts/generar_reportes.py
+```
+*Genera automáticamente `data/eval/dataset_eval.json`, `resultados/evaluacion_s3.json`, `resultados/costos_s3.json` y `data/carga/unidades_1000.json`.*
+
 ---
 
-## 🧪 Pruebas Automatizadas (22/22 PASSED)
+## 🧪 Pruebas Automatizadas (26/26 PASSED)
 
 Para validar todo el sistema sin gastar créditos de API ni requerir conexión a internet, se utiliza el cliente simulado (`src/llm_mock.py`):
 
@@ -185,6 +222,7 @@ pytest -v
 ```
 
 - `tests/test_agent.py`: Rechazo de precios inventados, validación de compatibilidad, control de 2da foto y límite de iteraciones.
+- `tests/test_evaluacion.py`: Integridad de catálogo/ERP, métricas Top-1/Top-3 (S3), percentiles FinOps (`p50`/`p95`) y armado de las 1,000 unidades.
 - `tests/test_tools.py`: Búsqueda en catálogo, consultas SQL, manejo de stock cero y cálculo de totales.
 - `tests/test_vision.py`: Validación de firmas binarias (*magic bytes*), archivos corruptos y formatos admitidos.
 

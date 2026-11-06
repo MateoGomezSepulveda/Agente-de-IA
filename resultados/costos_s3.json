@@ -1,0 +1,50 @@
+{
+  "total_tareas_analizadas": 19,
+  "modelo": "grok-4.7",
+  "tarifa_millon_tokens_usd": {
+    "entrada": 0.6,
+    "salida": 1.2
+  },
+  "tokens": {
+    "promedio_entrada": 7895.5,
+    "promedio_salida": 270.1,
+    "promedio_total": 8165.6,
+    "total_acumulado": 155146
+  },
+  "costo_por_tarea_usd": {
+    "promedio": 0.005061,
+    "p50": 0.005108,
+    "p95": 0.0078,
+    "minimo": 0.001953,
+    "maximo": 0.007928,
+    "total_acumulado": 0.096167
+  },
+  "latencia_segundos": {
+    "promedio": 13.17,
+    "p50": 10.65,
+    "p95": 24.48,
+    "maximo": 30.1
+  },
+  "desglose_por_flujo": {
+    "cotizacion_completa_3_tools": {
+      "ejecuciones": 4,
+      "costo_promedio_usd": 0.007649,
+      "costo_p50_usd": 0.007713
+    },
+    "consulta_inventario_2_tools": {
+      "ejecuciones": 4,
+      "costo_promedio_usd": 0.005661,
+      "costo_p50_usd": 0.005638
+    },
+    "busqueda_catalogo_1_tool": {
+      "ejecuciones": 5,
+      "costo_promedio_usd": 0.003101,
+      "costo_p50_usd": 0.003077
+    }
+  },
+  "proyeccion_1000_unidades": {
+    "costo_esperado_promedio_usd": 5.06,
+    "costo_escenario_p95_usd": 7.8,
+    "tokens_estimados_1000_unidades": 8165579
+  }
+}

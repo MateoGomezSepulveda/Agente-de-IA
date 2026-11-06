@@ -11,11 +11,28 @@ from src.db import guardar_cotizacion, obtener_inventario
 
 CATALOGO_PATH = Path(__file__).resolve().parent.parent / "data" / "catalogo.json"
 MAX_CANDIDATOS = 5
+STOPWORDS_BUSQUEDA = {
+    "con", "sin", "del", "las", "los", "una", "uno", "por", "para", "color", "tipo", "forma", "dos"
+}
 
 
 def _normalizar(texto: str) -> str:
     texto = unicodedata.normalize("NFD", texto.lower())
     return "".join(c for c in texto if unicodedata.category(c) != "Mn")
+
+
+def _coincide_clave(clave: str, texto_catalogo: str) -> bool:
+    """Evalúa coincidencia directa o por raíces en frases compuestas del LLM (Mejora S3)."""
+    if clave in texto_catalogo:
+        return True
+    subpalabras = [
+        p.rstrip("s")
+        for p in clave.split()
+        if len(p) >= 4 and p not in STOPWORDS_BUSQUEDA and len(p.rstrip("s")) >= 4
+    ]
+    if len(subpalabras) >= 2:
+        return sum(1 for sp in subpalabras if sp in texto_catalogo) >= 2
+    return False
 
 
 def cargar_catalogo():
@@ -54,7 +71,7 @@ def buscar_en_catalogo(palabras_clave):
                 ]
             )
         )
-        coincidencias = sorted({clave for clave in claves if clave in texto})
+        coincidencias = sorted({clave for clave in claves if _coincide_clave(clave, texto)})
         if coincidencias:
             candidatos.append(
                 {

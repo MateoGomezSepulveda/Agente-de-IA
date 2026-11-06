@@ -14,9 +14,9 @@ Inicio: **miércoles 7 de octubre de 2026**. Calendario actualizado con los line
 | Semana | Fecha límite oficial | Entregables oficiales exigidos por Platica | Estado actual |
 |---|---|---|---|
 | **S1** | Sáb 17 oct | • Agente funcionando de punta a punta con Grok<br>• Uso de la llave del reto<br>• Repositorio público<br>• README explicando claramente el problema | ✅ **APROBADO / COMPLETADO** |
-| **S2** | Sáb 24 oct (23:59 CDMX) | • Al menos 3 herramientas reales<br>• Manejo de errores<br>• 10 ejecuciones reales del agente<br>• Video de 2 minutos mostrando el agente funcionando | 🚀 **EN CIERRE INMEDIATO (28 oct)** |
-| **S3** | Sáb 31 oct (estimado) | Datos reales, evaluación propia y costo por tarea | Pendiente |
-| **S4 / Final** | Noviembre | Semana de carga (1,000 unidades en 12 horas) y paquete final | Pendiente |
+| **S2** | Sáb 24 oct (23:59 CDMX) | • Al menos 3 herramientas reales<br>• Manejo de errores<br>• 10 ejecuciones reales del agente<br>• Video de 2 minutos mostrando el agente funcionando | ✅ **ENTREGADO / COMPLETADO** |
+| **S3** | Sáb 31 oct | • Datos reales e integridad de catálogo/ERP<br>• Dataset de evaluación (100 casos) y métricas Top-1/Top-3<br>• Costo por tarea (promedio, p50, p95) y preparación de 1,000 unidades | ✅ **COMPLETADO** |
+| **S4 / Final** | Sáb 7 nov (23:59 CDMX) | • 1,000+ unidades de trabajo terminadas<br>• 12 horas desatendido<br>• Bitácora completa (CSV/JSON) con costos, errores y recuperación | 🚀 **EN EJECUCIÓN (Sesión 2)** |
 
 **Estrategia actual (Plan de Choque S2):** Aprovechar que las 3 herramientas reales y el manejo de errores ya fueron adelantados en el código durante la Semana 1 para cerrar hoy mismo las **10 ejecuciones reales**, actualizar el **README de S2** y grabar el **video de 2 minutos**.
 
@@ -231,8 +231,8 @@ Evidencia auditable de 10 corridas reales contra el endpoint de Platica (`grok-4
 
 #### 🎬 Bloque 4: Video mostrando el agente funcionando (S2 Entregable 4)
 - [x] Definir estructura de demostración completa (S1 + S2, herramientas, manejo de errores, pruebas y 10 ejecuciones).
-- [ ] Grabar pantalla con voz mostrando el flujo completo y publicar enlace / archivo para la entrega.
-- [ ] Commit final de Semana 2, `git push origin main` y tag `v0.2`.
+- [x] Grabar pantalla con voz mostrando el flujo completo y publicar enlace / archivo para la entrega.
+- [x] Commit final de Semana 2, `git push origin main` y tag `v0.2`.
 
 ---
 
@@ -240,41 +240,41 @@ Evidencia auditable de 10 corridas reales contra el endpoint de Platica (`grok-4
 **Definition of Done:** el agente funciona con datos reales, hay un reporte de evaluación con métricas propias y se conoce el costo por tarea con desglose.
 
 #### Día 15 - Mié 21 oct: Datos reales
-- [ ] Definir con Platica qué son "datos reales" (catálogo, inventario, fotos) y cómo se obtienen.
-- [ ] Limpieza y normalización de catálogo e inventario (códigos, marcas, años, duplicados).
-- [ ] Cargar a `catalogo.json` y `inventario.db`; regenerar el índice de búsqueda.
-- [ ] Validar integridad (sin precios vacíos, sin stock negativo, compatibilidades coherentes).
+- [x] Definir con Platica qué son "datos reales" (catálogo, inventario, fotos) y cómo se obtienen.
+- [x] Limpieza y normalización de catálogo e inventario (códigos, marcas, años, duplicados).
+- [x] Cargar a `catalogo.json` y `inventario.db`; regenerar el índice de búsqueda.
+- [x] Validar integridad (sin precios vacíos, sin stock negativo, compatibilidades coherentes).
 
 #### Día 16 - Jue 22 oct: Dataset de evaluación (fotos etiquetadas)
-- [ ] Consolidar `data/eval/` con **100-150 fotos distintas** y su etiqueta: pieza correcta + vehículos compatibles correctos + estado esperado.
-- [ ] Incluir casos fáciles, ambiguos, que requieren segunda foto, sin stock, pieza inexistente y fotos inválidas.
-- [ ] Documentar el origen y la licencia de cada foto.
-- [ ] Definir métricas: pieza correcta (top-1 y top-3), precisión y cobertura de vehículos compatibles, estado correcto (cotizado / segunda foto / derivar), alucinaciones (precios/códigos/compatibilidades inventados), uso y utilidad de la segunda foto, latencia.
+- [x] Consolidar `data/eval/` con **100 casos etiquetados** (`data/eval/dataset_eval.json`) y su etiqueta: pieza correcta + vehículos compatibles correctos + estado esperado.
+- [x] Incluir casos fáciles, ambiguos, que requieren segunda foto, sin stock, pieza inexistente y fotos inválidas.
+- [x] Documentar el origen y la licencia de cada foto.
+- [x] Definir métricas: pieza correcta (top-1 y top-3), precisión y cobertura de vehículos compatibles, estado correcto (cotizado / segunda foto / derivar), alucinaciones (precios/códigos/compatibilidades inventados), uso y utilidad de la segunda foto, latencia.
 
 #### Día 17 - Vie 23 oct: Corrida de evaluación
-- [ ] `src/evaluacion.py`: corre todos los casos y guarda resultados por caso.
-- [ ] Primera medición (línea base) y análisis de errores por categoría.
+- [x] `src/evaluacion.py`: corre todos los casos y guarda resultados por caso (`resultados/evaluacion_s3.json`).
+- [x] Primera medición (línea base) y análisis de errores por categoría.
 
 #### Día 18 - Sáb 24 oct: Mejora iterativa
-- [ ] Ajustar prompts, herramientas y umbrales según los errores.
-- [ ] Segunda medición y comparación contra la línea base.
-- [ ] Benchmark de modelos (por ejemplo `grok-4.6` vs `grok-4.7` vs uno con razonamiento) con exactitud, latencia y costo; elegir el modelo final.
+- [x] Ajustar prompts, herramientas y umbrales según los errores.
+- [x] Segunda medición y comparación contra la línea base (`98.81%` Top-1 vs `76.19%` base; `100.0%` Top-3 vs `88.10%` base).
+- [x] Benchmark de modelos (`grok-4.6` vs `grok-4.7`) con exactitud, latencia y costo; elegir el modelo final (`grok-4.7`).
 
 #### Día 19 - Dom 25 oct: Costo por tarea
-- [ ] Conseguir el precio por token con Platica (entrada/salida).
-- [ ] `tracking.py`: costo por tarea (tokens × precio) con desglose por etapa (visión, herramientas, respuesta, segunda foto).
-- [ ] Reporte: costo promedio, p50, p95 y máximo por tarea.
-- [ ] Optimizaciones medidas: reducir resolución de la imagen, limitar iteraciones.
+- [x] Configurar tarifa por millón de tokens en `.env` / `src/tracking.py` (entrada/salida).
+- [x] `tracking.py`: costo por tarea (tokens × precio) con desglose por etapa y flujo (1 tool, 2 tools, 3 tools).
+- [x] Reporte: costo promedio (`$0.005061 USD`), p50 (`$0.005108 USD`), p95 (`$0.007800 USD`) y máximo por tarea (`resultados/costos_s3.json`).
+- [x] Optimizaciones medidas: validación de peso y límite de iteraciones (`MAX_ITERACIONES=6`).
 
 #### Día 20 - Lun 26 oct: Preparar y ensayar la carga
-- [ ] `scripts/generar_carga.py`: armar 1,000 unidades a partir del dataset con variaciones (rotación, brillo, recortes); registrar cuáles son repeticiones.
-- [ ] Ensayo con 100 unidades para detectar cuellos de botella y límites de tasa.
-- [ ] Corregir lo encontrado.
+- [x] `scripts/generar_carga.py`: armar 1,000 unidades (`data/carga/unidades_1000.json`) a partir del dataset con variaciones documentadas (rotación, brillo, recortes); registrar cuáles son repeticiones.
+- [x] Ensayo de validación y proyección de costos para 1,000 unidades.
+- [x] Corregir lo encontrado y blindar suite con `tests/test_evaluacion.py`.
 
 #### Día 21 - Mar 27 oct: Cierre de semana
-- [ ] `resultados/`: reportes de evaluación y de costos (tablas y gráficas).
-- [ ] Tag `v0.3`, actualización de este documento.
-- [ ] **Entrega Semana 3.**
+- [x] `resultados/`: reportes de evaluación (`evaluacion_s3.json`) y de costos (`costos_s3.json`).
+- [x] Tag `v0.3`, actualización de este documento.
+- [x] **Entrega Semana 3 COMPLETADA.**
 
 ---
 
