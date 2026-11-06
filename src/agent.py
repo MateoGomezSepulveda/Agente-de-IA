@@ -108,7 +108,7 @@ def _registrar_resultado(nombre, argumentos, resultado, resultados_tools):
         resultados_tools["cotizaciones"][resultado["id_repuesto"]] = resultado
 
 
-async def _llamar_modelo(cliente, mensajes):
+async def _llamar_modelo(cliente, mensajes, incidentes_recuperados=None):
     """Reintentos acotados. 402 y autenticación no se reintentan: no hay crédito que gastar."""
     espera = 2
     ultimo_error = None
@@ -123,6 +123,10 @@ async def _llamar_modelo(cliente, mensajes):
             )
         except openai.RateLimitError as e:
             ultimo_error = e
+            if incidentes_recuperados is not None:
+                incidentes_recuperados.append(
+                    f"HTTP 429 RateLimitError en intento {intento + 1} (backoff {espera}s)"
+                )
             print(f"Límite de tasa (429). Reintento {intento + 1} en {espera}s.")
             await asyncio.sleep(espera)
             espera *= 2
@@ -134,6 +138,10 @@ async def _llamar_modelo(cliente, mensajes):
             raise RuntimeError("API key rechazada. Revisa PLATICA_API_KEY.") from e
         except openai.APITimeoutError as e:
             ultimo_error = e
+            if incidentes_recuperados is not None:
+                incidentes_recuperados.append(
+                    f"APITimeoutError en intento {intento + 1} (backoff {espera}s)"
+                )
             print(f"Timeout. Reintento {intento + 1} en {espera}s.")
             await asyncio.sleep(espera)
             espera *= 2
@@ -186,6 +194,7 @@ async def ejecutar_agente(ruta_imagen, ruta_segunda_imagen=None, cliente=None):
     tokens_salida = 0
     resultados_tools = {"catalogo": {}, "inventario": {}, "cotizaciones": {}}
     traza = []
+    incidentes_recuperados = []
 
     contenido = [{"type": "text", "text": "Identifica la pieza de la foto, busca compatibles y cotiza solo con las herramientas."}]
     for i, imagen in enumerate(imagenes, start=1):
@@ -198,7 +207,7 @@ async def ejecutar_agente(ruta_imagen, ruta_segunda_imagen=None, cliente=None):
     ]
 
     for iteracion in range(1, config.MAX_ITERACIONES + 1):
-        respuesta = await _llamar_modelo(cliente, mensajes)
+        respuesta = await _llamar_modelo(cliente, mensajes, incidentes_recuperados)
         if respuesta.usage:
             tokens_entrada += respuesta.usage.prompt_tokens or 0
             tokens_salida += respuesta.usage.completion_tokens or 0
@@ -219,6 +228,8 @@ async def ejecutar_agente(ruta_imagen, ruta_segunda_imagen=None, cliente=None):
                     "motivo": f"La respuesta del modelo no pasó la validación: {e}",
                     "error_validacion": str(e),
                 }
+            if incidentes_recuperados:
+                datos["incidentes_recuperados"] = incidentes_recuperados
             datos["tarea_id"] = tarea_id
             datos["tracking"] = registrar_uso(
                 tarea_id, config.MODEL, tokens_entrada, tokens_salida, time.time() - inicio, traza
@@ -251,6 +262,8 @@ async def ejecutar_agente(ruta_imagen, ruta_segunda_imagen=None, cliente=None):
         "motivo": f"Se alcanzó el máximo de {config.MAX_ITERACIONES} iteraciones sin una respuesta final.",
         "tarea_id": tarea_id,
     }
+    if incidentes_recuperados:
+        datos["incidentes_recuperados"] = incidentes_recuperados
     datos["tracking"] = registrar_uso(
         tarea_id, config.MODEL, tokens_entrada, tokens_salida, time.time() - inicio, traza
     )

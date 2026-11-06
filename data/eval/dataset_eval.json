@@ -2012,26 +2012,32 @@
     "segunda_imagen": null,
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "motor",
-      "limpiaparabrisas",
-      "brazo",
-      "conector"
+      "bateria",
+      "hibrida",
+      "inversor",
+      "cables"
     ],
     "esperado": {
       "id_repuesto": "REP-035",
-      "nombre": "Motor del Limpiaparabrisas",
-      "codigo_oem": "76505-TBA-A01",
+      "nombre": "Módulo de Batería Híbrida / Inversor HV",
+      "codigo_oem": "G9510-47060",
       "estado": "cotizado",
       "vehiculos_compatibles": [
         {
-          "marca": "Honda",
-          "modelo": "Civic",
+          "marca": "Toyota",
+          "modelo": "Prius",
           "anio_desde": 2016,
-          "anio_hasta": 2021
+          "anio_hasta": 2022
+        },
+        {
+          "marca": "Toyota",
+          "modelo": "Corolla Hybrid",
+          "anio_desde": 2020,
+          "anio_hasta": 2024
         }
       ],
-      "precio_unitario": 950.0,
-      "stock": 4
+      "precio_unitario": 14850.0,
+      "stock": 2
     }
   },
   {
@@ -2041,24 +2047,30 @@
     "segunda_imagen": null,
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "electrico",
-      "negro"
+      "metalica",
+      "rectangular"
     ],
     "esperado": {
       "id_repuesto": "REP-035",
-      "nombre": "Motor del Limpiaparabrisas",
-      "codigo_oem": "76505-TBA-A01",
+      "nombre": "Módulo de Batería Híbrida / Inversor HV",
+      "codigo_oem": "G9510-47060",
       "estado": "cotizado",
       "vehiculos_compatibles": [
         {
-          "marca": "Honda",
-          "modelo": "Civic",
+          "marca": "Toyota",
+          "modelo": "Prius",
           "anio_desde": 2016,
-          "anio_hasta": 2021
+          "anio_hasta": 2022
+        },
+        {
+          "marca": "Toyota",
+          "modelo": "Corolla Hybrid",
+          "anio_desde": 2020,
+          "anio_hasta": 2024
         }
       ],
-      "precio_unitario": 950.0,
-      "stock": 4
+      "precio_unitario": 14850.0,
+      "stock": 2
     }
   },
   {
@@ -2068,26 +2080,32 @@
     "segunda_imagen": null,
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "switch",
-      "encendido",
-      "llave",
-      "cilindro"
+      "transmision",
+      "caja",
+      "cambios",
+      "velocidades"
     ],
     "esperado": {
       "id_repuesto": "REP-036",
-      "nombre": "Switch de Encendido",
-      "codigo_oem": "35130-TBA-A01",
+      "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+      "codigo_oem": "30300-02180",
       "estado": "cotizado",
       "vehiculos_compatibles": [
         {
-          "marca": "Honda",
-          "modelo": "Civic",
+          "marca": "Toyota",
+          "modelo": "Corolla",
+          "anio_desde": 2014,
+          "anio_hasta": 2021
+        },
+        {
+          "marca": "Toyota",
+          "modelo": "Yaris",
           "anio_desde": 2016,
-          "anio_hasta": 2018
+          "anio_hasta": 2022
         }
       ],
-      "precio_unitario": 640.0,
-      "stock": 7
+      "precio_unitario": 11200.0,
+      "stock": 2
     }
   },
   {
@@ -2097,25 +2115,31 @@
     "segunda_imagen": null,
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "switch",
-      "encendido",
-      "llave"
+      "transmision",
+      "caja",
+      "cambios"
     ],
     "esperado": {
       "id_repuesto": "REP-036",
-      "nombre": "Switch de Encendido",
-      "codigo_oem": "35130-TBA-A01",
+      "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+      "codigo_oem": "30300-02180",
       "estado": "cotizado",
       "vehiculos_compatibles": [
         {
-          "marca": "Honda",
-          "modelo": "Civic",
+          "marca": "Toyota",
+          "modelo": "Corolla",
+          "anio_desde": 2014,
+          "anio_hasta": 2021
+        },
+        {
+          "marca": "Toyota",
+          "modelo": "Yaris",
           "anio_desde": 2016,
-          "anio_hasta": 2018
+          "anio_hasta": 2022
         }
       ],
-      "precio_unitario": 640.0,
-      "stock": 7
+      "precio_unitario": 11200.0,
+      "stock": 2
     }
   },
   {
@@ -2661,9 +2685,9 @@
     "segunda_imagen": "data/fotos_prueba/test3.jpg",
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "transmision",
-      "diferencial",
-      "engranes"
+      "turbocompresor",
+      "intercooler",
+      "titanio"
     ],
     "esperado": {
       "id_repuesto": "",
@@ -2682,9 +2706,9 @@
     "segunda_imagen": "data/fotos_prueba/test3.jpg",
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "transmision",
-      "diferencial",
-      "engranes"
+      "turbocompresor",
+      "intercooler",
+      "titanio"
     ],
     "esperado": {
       "id_repuesto": "",
@@ -2703,9 +2727,9 @@
     "segunda_imagen": "data/fotos_prueba/test3.jpg",
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "transmision",
-      "diferencial",
-      "engranes"
+      "turbocompresor",
+      "intercooler",
+      "titanio"
     ],
     "esperado": {
       "id_repuesto": "",
@@ -2724,9 +2748,9 @@
     "segunda_imagen": "data/fotos_prueba/test3.jpg",
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "transmision",
-      "diferencial",
-      "engranes"
+      "turbocompresor",
+      "intercooler",
+      "titanio"
     ],
     "esperado": {
       "id_repuesto": "",
@@ -2745,9 +2769,9 @@
     "segunda_imagen": "data/fotos_prueba/test3.jpg",
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "transmision",
-      "diferencial",
-      "engranes"
+      "turbocompresor",
+      "intercooler",
+      "titanio"
     ],
     "esperado": {
       "id_repuesto": "",
@@ -2766,9 +2790,9 @@
     "segunda_imagen": "data/fotos_prueba/test3.jpg",
     "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
     "atributos_observados": [
-      "transmision",
-      "diferencial",
-      "engranes"
+      "turbocompresor",
+      "intercooler",
+      "titanio"
     ],
     "esperado": {
       "id_repuesto": "",

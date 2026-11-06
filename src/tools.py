@@ -3,6 +3,7 @@
 El modelo solo pide que se ejecuten. Precios, stock, compatibilidades y
 totales salen siempre de aquí, nunca de la memoria del modelo.
 """
+import functools
 import json
 import unicodedata
 from pathlib import Path
@@ -35,6 +36,7 @@ def _coincide_clave(clave: str, texto_catalogo: str) -> bool:
     return False
 
 
+@functools.lru_cache(maxsize=1)
 def cargar_catalogo():
     with open(CATALOGO_PATH, "r", encoding="utf-8") as f:
         return json.load(f)

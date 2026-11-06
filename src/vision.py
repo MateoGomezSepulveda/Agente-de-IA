@@ -44,6 +44,9 @@ def _optimizar_dimensiones(contenido: bytes, formato: str, max_dim: int = MAX_DI
         return contenido
 
 
+_CACHE_B64 = {}
+
+
 def procesar_imagen_base64(ruta_imagen: str, optimizar: bool = True) -> str:
     ruta = Path(ruta_imagen)
     if not ruta.is_file():
@@ -55,6 +58,11 @@ def procesar_imagen_base64(ruta_imagen: str, optimizar: bool = True) -> str:
             f"Formato no soportado ({ruta.suffix or 'sin extensión'}). "
             "Se aceptan JPG, PNG y WEBP."
         )
+
+    stat = ruta.stat()
+    clave_cache = (str(ruta.resolve()), stat.st_mtime_ns, stat.st_size, optimizar)
+    if clave_cache in _CACHE_B64:
+        return _CACHE_B64[clave_cache]
 
     contenido = ruta.read_bytes()
     if not contenido:
@@ -74,6 +82,8 @@ def procesar_imagen_base64(ruta_imagen: str, optimizar: bool = True) -> str:
         contenido = _optimizar_dimensiones(contenido, formato)
 
     try:
-        return base64.b64encode(contenido).decode("ascii")
+        resultado = base64.b64encode(contenido).decode("ascii")
+        _CACHE_B64[clave_cache] = resultado
+        return resultado
     except binascii.Error as e:
         raise ValueError(f"No se pudo codificar la imagen: {e}") from e

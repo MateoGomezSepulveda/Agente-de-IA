@@ -211,7 +211,7 @@ def generar_dataset_evaluacion(ruta_salida: Path | None = None) -> list[dict]:
                 "imagen": "data/fotos_prueba/test.jpg",
                 "segunda_imagen": "data/fotos_prueba/test3.jpg",
                 "licencia_origen": "Dataset interno Platica Challenge / Dominio Público CC0",
-                "atributos_observados": ["transmision", "diferencial", "engranes"],
+                "atributos_observados": ["turbocompresor", "intercooler", "titanio"],
                 "esperado": {
                     "id_repuesto": "",
                     "nombre": "",

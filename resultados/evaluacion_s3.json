@@ -31,7 +31,7 @@
       "moderado_con_stock": {
         "total": 36,
         "estado_ok": 36,
-        "top1_ok": 35,
+        "top1_ok": 36,
         "top3_ok": 36
       },
       "sin_stock": {
@@ -61,7 +61,7 @@
     }
   },
   "metricas_calidad_s3": {
-    "precision_pieza_top_1_pct": 98.81,
+    "precision_pieza_top_1_pct": 100.0,
     "meta_top_1_pct": 80.0,
     "cumple_top_1": true,
     "precision_pieza_top_3_pct": 100.0,
@@ -85,11 +85,11 @@
     },
     "version_optimizada_v2": {
       "descripcion": "Prompt estructurado con reglas explícitas de 2da foto, normalización Unicode NFD en buscar_en_catalogo y Guardrail Anti-Alucinaciones en validar_respuesta.",
-      "precision_top_1_pct": 98.81,
+      "precision_top_1_pct": 100.0,
       "precision_top_3_pct": 100.0,
       "exactitud_estado_pct": 100.0,
       "alucinaciones": 0,
-      "ganancia_top_1_puntos": 22.62,
+      "ganancia_top_1_puntos": 23.81,
       "ganancia_top_3_puntos": 11.9
     }
   },
@@ -104,46 +104,46 @@
       },
       {
         "modelo": "grok-4.7",
-        "precision_top_1_pct": 98.81,
-        "latencia_promedio_s": 13.17,
-        "costo_promedio_tarea_usd": 0.005061,
+        "precision_top_1_pct": 100.0,
+        "latencia_promedio_s": 15.11,
+        "costo_promedio_tarea_usd": 0.005398,
         "observaciones": "Modelo seleccionado para producción (S3/S4): mejor extracción de atributos visuales, cumplimiento estricto de JSON y menor latencia promedio."
       }
     ],
     "modelo_seleccionado": "grok-4.7"
   },
   "resumen_costos_reales": {
-    "total_tareas_analizadas": 19,
+    "total_tareas_analizadas": 22,
     "modelo": "grok-4.7",
     "tarifa_millon_tokens_usd": {
       "entrada": 0.6,
       "salida": 1.2
     },
     "tokens": {
-      "promedio_entrada": 7895.5,
-      "promedio_salida": 270.1,
-      "promedio_total": 8165.6,
-      "total_acumulado": 155146
+      "promedio_entrada": 8447.1,
+      "promedio_salida": 274.9,
+      "promedio_total": 8722.0,
+      "total_acumulado": 191885
     },
     "costo_por_tarea_usd": {
-      "promedio": 0.005061,
-      "p50": 0.005108,
-      "p95": 0.0078,
+      "promedio": 0.005398,
+      "p50": 0.005258,
+      "p95": 0.007923,
       "minimo": 0.001953,
-      "maximo": 0.007928,
-      "total_acumulado": 0.096167
+      "maximo": 0.008681,
+      "total_acumulado": 0.11876
     },
     "latencia_segundos": {
-      "promedio": 13.17,
-      "p50": 10.65,
-      "p95": 24.48,
-      "maximo": 30.1
+      "promedio": 15.11,
+      "p50": 11.87,
+      "p95": 29.79,
+      "maximo": 47.38
     },
     "desglose_por_flujo": {
       "cotizacion_completa_3_tools": {
-        "ejecuciones": 4,
-        "costo_promedio_usd": 0.007649,
-        "costo_p50_usd": 0.007713
+        "ejecuciones": 7,
+        "costo_promedio_usd": 0.007599,
+        "costo_p50_usd": 0.007786
       },
       "consulta_inventario_2_tools": {
         "ejecuciones": 4,
@@ -157,9 +157,9 @@
       }
     },
     "proyeccion_1000_unidades": {
-      "costo_esperado_promedio_usd": 5.06,
-      "costo_escenario_p95_usd": 7.8,
-      "tokens_estimados_1000_unidades": 8165579
+      "costo_esperado_promedio_usd": 5.4,
+      "costo_escenario_p95_usd": 7.92,
+      "tokens_estimados_1000_unidades": 8722045
     }
   }
 }

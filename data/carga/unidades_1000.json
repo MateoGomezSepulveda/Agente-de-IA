@@ -1,5 +1,5 @@
 {
-  "total_unidades": 1000,
+  "total_unidades": 1020,
   "casos_base_unicos": 100,
   "factor_expansion_variaciones": 10,
   "declaracion_transparencia": "Las 1,000 unidades se componen de 100 casos etiquetados base que cubren las 40 refacciones del catálogo y casos de borde (sin stock, fuera de ERP, ambiguos de 2da foto y fuera de catálogo), multiplicados por 10 perfiles de variación de captura en mostrador/taller.",
@@ -2224,26 +2224,32 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -2256,24 +2262,30 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -2286,26 +2298,32 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -2318,25 +2336,31 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -2951,9 +2975,9 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -2975,9 +2999,9 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -2999,9 +3023,9 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -3023,9 +3047,9 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -3047,9 +3071,9 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -3071,9 +3095,9 @@
       "variacion_visual": "original_sin_alteracion",
       "es_repeticion_variada": false,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -5305,26 +5329,32 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -5337,24 +5367,30 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -5367,26 +5403,32 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -5399,25 +5441,31 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -6032,9 +6080,9 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -6056,9 +6104,9 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -6080,9 +6128,9 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -6104,9 +6152,9 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -6128,9 +6176,9 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -6152,9 +6200,9 @@
       "variacion_visual": "rotacion_leve_5_grados",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -8386,26 +8434,32 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -8418,24 +8472,30 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -8448,26 +8508,32 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -8480,25 +8546,31 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -9113,9 +9185,9 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -9137,9 +9209,9 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -9161,9 +9233,9 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -9185,9 +9257,9 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -9209,9 +9281,9 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -9233,9 +9305,9 @@
       "variacion_visual": "ajuste_brillo_mas_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -11467,26 +11539,32 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -11499,24 +11577,30 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -11529,26 +11613,32 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -11561,25 +11651,31 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -12194,9 +12290,9 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -12218,9 +12314,9 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -12242,9 +12338,9 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -12266,9 +12362,9 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -12290,9 +12386,9 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -12314,9 +12410,9 @@
       "variacion_visual": "ajuste_brillo_menos_10_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -14548,26 +14644,32 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -14580,24 +14682,30 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -14610,26 +14718,32 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -14642,25 +14756,31 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -15275,9 +15395,9 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -15299,9 +15419,9 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -15323,9 +15443,9 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -15347,9 +15467,9 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -15371,9 +15491,9 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -15395,9 +15515,9 @@
       "variacion_visual": "recorte_central_90_pct",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -17629,26 +17749,32 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -17661,24 +17787,30 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -17691,26 +17823,32 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -17723,25 +17861,31 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -18356,9 +18500,9 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -18380,9 +18524,9 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -18404,9 +18548,9 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -18428,9 +18572,9 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -18452,9 +18596,9 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -18476,9 +18620,9 @@
       "variacion_visual": "contraste_alto_taller",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -20710,26 +20854,32 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -20742,24 +20892,30 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -20772,26 +20928,32 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -20804,25 +20966,31 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -21437,9 +21605,9 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -21461,9 +21629,9 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -21485,9 +21653,9 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -21509,9 +21677,9 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -21533,9 +21701,9 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -21557,9 +21725,9 @@
       "variacion_visual": "iluminacion_calida_almacen",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -23791,26 +23959,32 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -23823,24 +23997,30 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -23853,26 +24033,32 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -23885,25 +24071,31 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -24518,9 +24710,9 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -24542,9 +24734,9 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -24566,9 +24758,9 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -24590,9 +24782,9 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -24614,9 +24806,9 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -24638,9 +24830,9 @@
       "variacion_visual": "iluminacion_fria_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -26872,26 +27064,32 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -26904,24 +27102,30 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -26934,26 +27138,32 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -26966,25 +27176,31 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -27599,9 +27815,9 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -27623,9 +27839,9 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -27647,9 +27863,9 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -27671,9 +27887,9 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -27695,9 +27911,9 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -27719,9 +27935,9 @@
       "variacion_visual": "compresion_optimizada_movil",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -29953,26 +30169,32 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "motor",
-        "limpiaparabrisas",
-        "brazo",
-        "conector"
+        "bateria",
+        "hibrida",
+        "inversor",
+        "cables"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -29985,24 +30207,30 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "electrico",
-        "negro"
+        "metalica",
+        "rectangular"
       ],
       "esperado": {
         "id_repuesto": "REP-035",
-        "nombre": "Motor del Limpiaparabrisas",
-        "codigo_oem": "76505-TBA-A01",
+        "nombre": "Módulo de Batería Híbrida / Inversor HV",
+        "codigo_oem": "G9510-47060",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Prius",
             "anio_desde": 2016,
-            "anio_hasta": 2021
+            "anio_hasta": 2022
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla Hybrid",
+            "anio_desde": 2020,
+            "anio_hasta": 2024
           }
         ],
-        "precio_unitario": 950.0,
-        "stock": 4
+        "precio_unitario": 14850.0,
+        "stock": 2
       }
     },
     {
@@ -30015,26 +30243,32 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave",
-        "cilindro"
+        "transmision",
+        "caja",
+        "cambios",
+        "velocidades"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -30047,25 +30281,31 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "switch",
-        "encendido",
-        "llave"
+        "transmision",
+        "caja",
+        "cambios"
       ],
       "esperado": {
         "id_repuesto": "REP-036",
-        "nombre": "Switch de Encendido",
-        "codigo_oem": "35130-TBA-A01",
+        "nombre": "Conjunto de Transmisión y Diferencial Helicoidal",
+        "codigo_oem": "30300-02180",
         "estado": "cotizado",
         "vehiculos_compatibles": [
           {
-            "marca": "Honda",
-            "modelo": "Civic",
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
             "anio_desde": 2016,
-            "anio_hasta": 2018
+            "anio_hasta": 2022
           }
         ],
-        "precio_unitario": 640.0,
-        "stock": 7
+        "precio_unitario": 11200.0,
+        "stock": 2
       }
     },
     {
@@ -30680,9 +30920,9 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -30704,9 +30944,9 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -30728,9 +30968,9 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -30752,9 +30992,9 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -30776,9 +31016,9 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -30800,9 +31040,9 @@
       "variacion_visual": "angulo_secundario_mostrador",
       "es_repeticion_variada": true,
       "atributos_observados": [
-        "transmision",
-        "diferencial",
-        "engranes"
+        "turbocompresor",
+        "intercooler",
+        "titanio"
       ],
       "esperado": {
         "id_repuesto": "",
@@ -30812,6 +31052,683 @@
         "vehiculos_compatibles": [],
         "precio_unitario": null,
         "stock": 0
+      }
+    },
+    {
+      "unidad_id": "UNI-1001",
+      "orden": 1001,
+      "caso_base_id": "EVAL-001",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "balatas",
+        "frenos",
+        "pastillas",
+        "media luna"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-001",
+        "nombre": "Balatas Delanteras Cerámicas",
+        "codigo_oem": "45022-TBA-A00",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Honda",
+            "modelo": "Civic",
+            "anio_desde": 2016,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Honda",
+            "modelo": "CR-V",
+            "anio_desde": 2017,
+            "anio_hasta": 2022
+          }
+        ],
+        "precio_unitario": 850.5,
+        "stock": 12
+      }
+    },
+    {
+      "unidad_id": "UNI-1002",
+      "orden": 1002,
+      "caso_base_id": "EVAL-002",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "balatas",
+        "frenos",
+        "pastillas"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-001",
+        "nombre": "Balatas Delanteras Cerámicas",
+        "codigo_oem": "45022-TBA-A00",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Honda",
+            "modelo": "Civic",
+            "anio_desde": 2016,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Honda",
+            "modelo": "CR-V",
+            "anio_desde": 2017,
+            "anio_hasta": 2022
+          }
+        ],
+        "precio_unitario": 850.5,
+        "stock": 12
+      }
+    },
+    {
+      "unidad_id": "UNI-1003",
+      "orden": 1003,
+      "caso_base_id": "EVAL-003",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "filtro",
+        "aceite",
+        "cilindro",
+        "metalico"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-002",
+        "nombre": "Filtro de Aceite Metálico",
+        "codigo_oem": "90915-YZZD4",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2023
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
+            "anio_desde": 2015,
+            "anio_hasta": 2023
+          }
+        ],
+        "precio_unitario": 220.0,
+        "stock": 5
+      }
+    },
+    {
+      "unidad_id": "UNI-1004",
+      "orden": 1004,
+      "caso_base_id": "EVAL-004",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "filtro",
+        "aceite",
+        "cilindro"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-002",
+        "nombre": "Filtro de Aceite Metálico",
+        "codigo_oem": "90915-YZZD4",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2014,
+            "anio_hasta": 2023
+          },
+          {
+            "marca": "Toyota",
+            "modelo": "Yaris",
+            "anio_desde": 2015,
+            "anio_hasta": 2023
+          }
+        ],
+        "precio_unitario": 220.0,
+        "stock": 5
+      }
+    },
+    {
+      "unidad_id": "UNI-1005",
+      "orden": 1005,
+      "caso_base_id": "EVAL-005",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "filtro",
+        "aire",
+        "panel",
+        "rectangular"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-003",
+        "nombre": "Filtro de Aire de Motor",
+        "codigo_oem": "17801-0T020",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "RAV4",
+            "anio_desde": 2013,
+            "anio_hasta": 2018
+          }
+        ],
+        "precio_unitario": 340.0,
+        "stock": 8
+      }
+    },
+    {
+      "unidad_id": "UNI-1006",
+      "orden": 1006,
+      "caso_base_id": "EVAL-006",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "filtro",
+        "aire",
+        "panel"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-003",
+        "nombre": "Filtro de Aire de Motor",
+        "codigo_oem": "17801-0T020",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "RAV4",
+            "anio_desde": 2013,
+            "anio_hasta": 2018
+          }
+        ],
+        "precio_unitario": 340.0,
+        "stock": 8
+      }
+    },
+    {
+      "unidad_id": "UNI-1007",
+      "orden": 1007,
+      "caso_base_id": "EVAL-007",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "bujia",
+        "iridio",
+        "electrodo",
+        "ceramica"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-004",
+        "nombre": "Bujía de Iridio",
+        "codigo_oem": "90919-01253",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Camry",
+            "anio_desde": 2012,
+            "anio_hasta": 2017
+          },
+          {
+            "marca": "Lexus",
+            "modelo": "ES350",
+            "anio_desde": 2013,
+            "anio_hasta": 2018
+          }
+        ],
+        "precio_unitario": 185.0,
+        "stock": 40
+      }
+    },
+    {
+      "unidad_id": "UNI-1008",
+      "orden": 1008,
+      "caso_base_id": "EVAL-008",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "bujia",
+        "iridio",
+        "electrodo"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-004",
+        "nombre": "Bujía de Iridio",
+        "codigo_oem": "90919-01253",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Camry",
+            "anio_desde": 2012,
+            "anio_hasta": 2017
+          },
+          {
+            "marca": "Lexus",
+            "modelo": "ES350",
+            "anio_desde": 2013,
+            "anio_hasta": 2018
+          }
+        ],
+        "precio_unitario": 185.0,
+        "stock": 40
+      }
+    },
+    {
+      "unidad_id": "UNI-1009",
+      "orden": 1009,
+      "caso_base_id": "EVAL-009",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "amortiguador",
+        "suspension",
+        "cilindro",
+        "vastago"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-005",
+        "nombre": "Amortiguador Delantero",
+        "codigo_oem": "51605-TBA-A02",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Honda",
+            "modelo": "Civic",
+            "anio_desde": 2016,
+            "anio_hasta": 2021
+          }
+        ],
+        "precio_unitario": 1450.0,
+        "stock": 3
+      }
+    },
+    {
+      "unidad_id": "UNI-1010",
+      "orden": 1010,
+      "caso_base_id": "EVAL-010",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "amortiguador",
+        "suspension",
+        "cilindro"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-005",
+        "nombre": "Amortiguador Delantero",
+        "codigo_oem": "51605-TBA-A02",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Honda",
+            "modelo": "Civic",
+            "anio_desde": 2016,
+            "anio_hasta": 2021
+          }
+        ],
+        "precio_unitario": 1450.0,
+        "stock": 3
+      }
+    },
+    {
+      "unidad_id": "UNI-1011",
+      "orden": 1011,
+      "caso_base_id": "EVAL-011",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "disco",
+        "freno",
+        "rotor",
+        "ventilado"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-006",
+        "nombre": "Disco de Freno Ventilado",
+        "codigo_oem": "45251-TBA-A00",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Honda",
+            "modelo": "Civic",
+            "anio_desde": 2016,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Honda",
+            "modelo": "Accord",
+            "anio_desde": 2018,
+            "anio_hasta": 2022
+          }
+        ],
+        "precio_unitario": 980.0,
+        "stock": 6
+      }
+    },
+    {
+      "unidad_id": "UNI-1012",
+      "orden": 1012,
+      "caso_base_id": "EVAL-012",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "disco",
+        "freno",
+        "rotor"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-006",
+        "nombre": "Disco de Freno Ventilado",
+        "codigo_oem": "45251-TBA-A00",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Honda",
+            "modelo": "Civic",
+            "anio_desde": 2016,
+            "anio_hasta": 2021
+          },
+          {
+            "marca": "Honda",
+            "modelo": "Accord",
+            "anio_desde": 2018,
+            "anio_hasta": 2022
+          }
+        ],
+        "precio_unitario": 980.0,
+        "stock": 6
+      }
+    },
+    {
+      "unidad_id": "UNI-1013",
+      "orden": 1013,
+      "caso_base_id": "EVAL-013",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "bomba",
+        "agua",
+        "polea",
+        "aluminio"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-007",
+        "nombre": "Bomba de Agua",
+        "codigo_oem": "16100-39416",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2009,
+            "anio_hasta": 2013
+          }
+        ],
+        "precio_unitario": 760.0,
+        "stock": 4
+      }
+    },
+    {
+      "unidad_id": "UNI-1014",
+      "orden": 1014,
+      "caso_base_id": "EVAL-014",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "empaque",
+        "impulsor"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-007",
+        "nombre": "Bomba de Agua",
+        "codigo_oem": "16100-39416",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2009,
+            "anio_hasta": 2013
+          }
+        ],
+        "precio_unitario": 760.0,
+        "stock": 4
+      }
+    },
+    {
+      "unidad_id": "UNI-1015",
+      "orden": 1015,
+      "caso_base_id": "EVAL-015",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "banda",
+        "distribucion",
+        "dientes",
+        "hule"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-008",
+        "nombre": "Banda de Distribución",
+        "codigo_oem": "13568-39016",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2003,
+            "anio_hasta": 2008
+          }
+        ],
+        "precio_unitario": 540.0,
+        "stock": 7
+      }
+    },
+    {
+      "unidad_id": "UNI-1016",
+      "orden": 1016,
+      "caso_base_id": "EVAL-016",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "banda",
+        "distribucion",
+        "dientes"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-008",
+        "nombre": "Banda de Distribución",
+        "codigo_oem": "13568-39016",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "anio_desde": 2003,
+            "anio_hasta": 2008
+          }
+        ],
+        "precio_unitario": 540.0,
+        "stock": 7
+      }
+    },
+    {
+      "unidad_id": "UNI-1017",
+      "orden": 1017,
+      "caso_base_id": "EVAL-017",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "alternador",
+        "polea",
+        "ventilador",
+        "conector"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-009",
+        "nombre": "Alternador 12V",
+        "codigo_oem": "27060-0H040",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Hilux",
+            "anio_desde": 2016,
+            "anio_hasta": 2023
+          }
+        ],
+        "precio_unitario": 3200.0,
+        "stock": 2
+      }
+    },
+    {
+      "unidad_id": "UNI-1018",
+      "orden": 1018,
+      "caso_base_id": "EVAL-018",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "alternador",
+        "polea",
+        "ventilador"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-009",
+        "nombre": "Alternador 12V",
+        "codigo_oem": "27060-0H040",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Hilux",
+            "anio_desde": 2016,
+            "anio_hasta": 2023
+          }
+        ],
+        "precio_unitario": 3200.0,
+        "stock": 2
+      }
+    },
+    {
+      "unidad_id": "UNI-1019",
+      "orden": 1019,
+      "caso_base_id": "EVAL-019",
+      "categoria": "facil_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "marcha",
+        "arranque",
+        "bendix",
+        "solenoide"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-010",
+        "nombre": "Marcha / Motor de Arranque",
+        "codigo_oem": "28100-0C010",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Hilux",
+            "anio_desde": 2012,
+            "anio_hasta": 2015
+          }
+        ],
+        "precio_unitario": 2100.0,
+        "stock": 2
+      }
+    },
+    {
+      "unidad_id": "UNI-1020",
+      "orden": 1020,
+      "caso_base_id": "EVAL-020",
+      "categoria": "moderado_con_stock",
+      "imagen": "data/fotos_prueba/test2.jpg",
+      "segunda_imagen": null,
+      "variacion_visual": "original_sin_alteracion",
+      "es_repeticion_variada": true,
+      "atributos_observados": [
+        "marcha",
+        "arranque",
+        "bendix"
+      ],
+      "esperado": {
+        "id_repuesto": "REP-010",
+        "nombre": "Marcha / Motor de Arranque",
+        "codigo_oem": "28100-0C010",
+        "estado": "cotizado",
+        "vehiculos_compatibles": [
+          {
+            "marca": "Toyota",
+            "modelo": "Hilux",
+            "anio_desde": 2012,
+            "anio_hasta": 2015
+          }
+        ],
+        "precio_unitario": 2100.0,
+        "stock": 2
       }
     }
   ]
