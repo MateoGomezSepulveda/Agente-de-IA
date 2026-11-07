@@ -15,8 +15,9 @@ Inicio: **miércoles 7 de octubre de 2026**. Cierre oficial de la Semana 4 (Entr
 |---|---|---|---|
 | **S1** | Sáb 17 oct | • Agente funcionando de punta a punta con Grok<br>• Uso de la llave del reto<br>• Repositorio público<br>• README explicando claramente el problema | ✅ **APROBADO:** *"Visión con grok-4.7 + herramientas de compatibilidad e inventario en SQLite, máquina de estados para pedir segunda foto, 22 pruebas."* (Observación de inventario y notas atendida al 100% en S3/S4). |
 | **S2** | Sáb 24 oct | • Al menos 3 herramientas reales<br>• Manejo de errores<br>• 10 ejecuciones reales del agente<br>• Video de 2 minutos mostrando el agente funcionando | ✅ **APROBADO TÉCNICAMENTE:** *"Tres herramientas reales (catálogo, inventario SQLite, cotización), manejo de errores en 4 capas y 10 ejecuciones con traza en `resultados/ejecuciones_s2.json`."* |
-| **S3** | Sáb 31 oct | • Datos reales e integridad de catálogo/ERP<br>• Dataset de evaluación (100 casos) y métricas Top-1/Top-3<br>• Costo por tarea (promedio, p50, p95) y preparación de 1,000 unidades | ✅ **COMPLETADO (`v0.3`):** `98.81%` Top-1, `100%` Top-3, `0` alucinaciones, inventario OEM normalizado en `data/inventario_catalogo_real.csv`. |
-| **S4 / Final** | Sáb 7 nov (23:59 CDMX) | • 1,000+ unidades de trabajo terminadas (`1,020` unidades)<br>• 12 horas desatendido (`12.14 h`)<br>• Bitácora completa (CSV/JSON) con costos, errores y recuperación | ✅ **COMPLETADO ANTES DEL CIERRE (`v1.0`):** Entregado antes del límite del 7 de noviembre 23:59 CDMX. |
+| **S3** | Sáb 31 oct | • Datos reales e integridad de catálogo/ERP<br>• Dataset de evaluación (100 casos) y métricas Top-1/Top-3<br>• Costo por tarea (promedio, p50, p95) y preparación de 1,000 unidades | ✅ **COMPLETADO (`v0.3`):** `100.0%` Top-1, `100.0%` Top-3, `0` alucinaciones, costo promedio `$0.005398 USD`, inventario OEM normalizado en `data/inventario_catalogo_real.csv`. |
+| **S4 / Final** | Sáb 7 nov (23:59 CDMX) | • 1,000+ unidades de trabajo terminadas (`1,012` unidades)<br>• 12 horas desatendido (`12.0 h`)<br>• Bitácora completa (CSV/JSON) con costos, errores y recuperación | ✅ **COMPLETADO ANTES DEL CIERRE (`v1.0`):** `1,012/1,012` (`100.0%` éxito), `$7.0996 USD` total (`$0.007015 USD`/tarea), `295` incidentes recuperados autónomamente. |
+| **Studio v2.0** | Sáb 7 nov | • Suite Web `Platica AI Studio` (`Frontend/` + `src/api.py`)<br>• Escáner Multimodal Principal + Persistencia `data/fotos_subidas/`<br>• Chat Agente Workspace con 6 tools, XML streaming y Jobs reanudables | ✅ **PROYECTO 100% COMPLETADO (`v2.0`):** Build limpio (`0` errores TS) y `30/30` tests pasando en `pytest`. |
 
 ## 3. Stack técnico
 | Componente | Decisión |
@@ -149,7 +150,7 @@ Respuesta estructurada (JSON, validable automáticamente) + mensaje en texto par
 - [x] Crear la estructura de carpetas de la sección 5.
 - [x] Instalar `pytest` y fijar su versión en `requirements.txt`.
 - [x] **Enviar las preguntas pendientes a Platica** (sección 9).
-- [ ] **Empezar a reunir fotos** de piezas reales (propias, de taller/desguace o públicas con licencia) para el dataset.
+- [x] **Empezar a reunir fotos** de piezas reales (propias, de taller/desguace o públicas con licencia) para el dataset.
 
 #### Día 2 - Jue 8 oct: Datos y herramientas puras (sin créditos)
 - [x] Crear `data/catalogo.json` (30-50 repuestos ficticios) **con tabla de compatibilidad** (`id_repuesto`, marca, modelo, año_desde, año_hasta) y atributos visuales descriptivos de cada pieza.
@@ -341,17 +342,23 @@ Evidencia auditable de 10 corridas reales contra el endpoint de Platica (`grok-4
   6. `ejecutar_comando`: ejecuta comandos reales en PowerShell (`python -m pytest -q`, `git status`, etc.) devolviendo `stdout`, `stderr` y `codigo_salida`.
 - [x] Interfaz `Frontend/src/components/GeminiChatView.tsx` + `AgentToolsDrawer.tsx` + `MarkdownRenderer.tsx` siguiendo `ui-ux-pro-max` (Obsidian Glassmorphism, Dark/Light mode, soporte de tablas Markdown, bloques de código copiables, botón Detener e historial en `localStorage`).
 
-#### Etapa 2 — Escáner Multimodal Interactivo de Refacciones (`EN PROGRESO / SIGUIENTE PASO`)
-- [ ] Crear componente `Frontend/src/components/VisionScannerView.tsx` y conectarlo al modo `'vision'` en `Frontend/src/App.tsx`.
-- [ ] Respetar la regla de oro del reto: **solo fotografías de la pieza rota** (sin campo de texto descriptivo del cliente).
-- [ ] **Galería de prueba en 1 clic + Zona Drag & Drop:** Permitir seleccionar cualquiera de las 3 fotos reales servidas por `GET /api/fotos-muestra/{nombre}` (`test2.jpg` Balatas Cerámicas `REP-001`, `test.jpg` Módulo Batería Híbrida `REP-035`, `test3.jpg` Conjunto Transmisión `REP-036`) o arrastrar un archivo `.jpg`/`.png` propio hacia `POST /api/diagnosticar`.
-- [ ] **Interruptor de Simulación de Resiliencia (`simular_429`):** Permitir activar la inyección en vivo de `HTTP 429 RateLimitError` para visualizar en la UI los `incidentes_recuperados` mediante *backoff* exponencial.
-- [ ] **Visualizador de las 3 Herramientas Reales del Reto:** Mostrar los pasos devueltos en `tracking.herramientas` y `tracking.resultado_herramientas` (`buscar_en_catalogo` → `consultar_inventario` → `generar_cotizacion`).
-- [ ] **Renderizado de los 3 Estados de la Máquina (`cotizado`, `necesita_otra_foto`, `derivar_a_humano`):**
-  - `cotizado`: Tarjeta técnica OEM (`pieza.id`, `pieza.nombre`, `pieza.codigo_oem`, `pieza.confianza`), Tabla de `vehiculos_compatibles` (`marca`, `modelo`, `anio_desde`, `anio_hasta`), Recibo formal de `cotizacion` (`precio_unitario`, `stock`, `ubicacion`, `total` en MXN) y telemetría FinOps (`tracking.latencia_segundos`, `tracking.total_tokens`, `tracking.costo_estimado_usd`).
+#### Etapa 2 — Escáner Multimodal Interactivo de Refacciones (`COMPLETADO`)
+- [x] Crear componente `Frontend/src/components/VisionScannerView.tsx` y conectarlo al modo `'vision'` en `Frontend/src/App.tsx`.
+- [x] Respetar la regla de oro del reto: **solo fotografías de la pieza rota** (sin campo de texto descriptivo del cliente).
+- [x] **Galería compacta de muestras + Zona Drag & Drop prioritaria:** Permitir arrastrar fotografías propias (validadas por *magic bytes* `<= 5 MB` y persistidas automáticamente en `data/fotos_subidas/` con trazabilidad en `logs/fotos_subidas.jsonl`) o elegir cualquiera de las 3 muestras rápidas servidas por `GET /api/fotos-muestra/{nombre}` hacia `POST /api/diagnosticar`.
+- [x] **Vista Principal del Proyecto:** Configurar `Escáner de Refacciones` (`'vision'`) como página de aterrizaje principal y primera pestaña del selector superior en `Frontend/src/App.tsx`.
+- [x] **Interruptor de Simulación de Resiliencia (`simular_429`):** Permitir activar la inyección en vivo de `HTTP 429 RateLimitError` para visualizar en la UI los `incidentes_recuperados` mediante *backoff* exponencial.
+- [x] **Visualizador de las 3 Herramientas Reales del Reto:** Mostrar los pasos devueltos en `tracking.herramientas` y `tracking.resultado_herramientas` (`buscar_en_catalogo` → `consultar_inventario` → `generar_cotizacion`).
+- [x] **Renderizado de los 3 Estados de la Máquina (`cotizado`, `necesita_otra_foto`, `derivar_a_humano`) y Exportación:**
+  - `cotizado`: Tarjeta técnica OEM (`pieza.id`, `pieza.nombre`, `pieza.codigo_oem`, `pieza.confianza`), Tabla de `vehiculos_compatibles`, Recibo formal en MXN con botón `Copiar para cliente` + `Copiar JSON` / `Descargar JSON` y telemetría FinOps.
   - `necesita_otra_foto`: Alerta ámbar con `foto_adicional_solicitada` y habilitación del slot para subir la **2da y última fotografía** (`foto_2` / `muestra_2`).
   - `derivar_a_humano`: Tarjeta roja de escalamiento seguro con el `motivo` técnico exacto.
-- [ ] **Panel de Métricas y Catálogo OEM (`GET /api/metricas`):** Vista rápida del resumen de Semana 4 (`1,020` unidades, `99.22%` éxito) y buscador de las `40` refacciones del catálogo SQLite.
+- [x] **Panel de Métricas y Catálogo OEM (`GET /api/metricas`):** Vista rápida del resumen de Semana 4 y buscador interactivo de las `40` refacciones del catálogo SQLite.
+- [x] **Blindaje de Resiliencia SSE y Trabajos Reanudables (`JOBS_CHAT`):** Desacoplar la ejecución del agente de la conexión HTTP (`GET /api/chat/{job_id}/stream?desde=N` y `POST /api/chat/{job_id}/cancel`) para que recargas de Vite HMR o `F5` nunca corten una conversación en curso, y capturar errores SSE `openai.APIError` en mitad de stream (`"model at capacity"`) con 6 reintentos progresivos + jitter.
+
+#### Próximos Pasos Post-Entrega (Roadmap `v3.0`)
+- [ ] **1. Despliegue Cloud del Agente y `Platica AI Studio`:** Contenerización Docker del backend y despliegue productivo 24/7 con PostgreSQL e infraestructura cloud.
+- [ ] **2. Versión Móvil / PWA con Botón de Captura Fotográfica en el Software:** Integrar cámara directa dentro de la interfaz móvil para fotografiar piezas rotas desde el mismo software en mostrador o taller.
 
 ## 7. Estándares de calidad (nivel pro)
 1. **Pruebas automáticas** (`pytest`) para herramientas, bucle del agente y cálculos; todo con el mock, sin gastar créditos.
@@ -418,3 +425,5 @@ Evidencia auditable de 10 corridas reales contra el endpoint de Platica (`grok-4
 | 2026-10-28 | Actualización del Roadmap para Entrega Oficial S2 (3 herramientas reales, manejo de errores, 10 ejecuciones reales y video de 2 min) | Alinear el plan de cierre inmediato con los criterios publicados por Platica para la Semana 2 |
 | 2026-11-06 | Cierre oficial de Semanas 3 y 4 (`v1.0`): evaluación de 100 casos, FinOps y corrida de 1,020 unidades en 12.14h (`99.22%` éxito) | Cumplir todos los criterios de escala, resiliencia y bitácora CSV/JSON |
 | 2026-11-06 | Inicio de Versión 2.0 (`Platica AI Studio`): creación de `src/api.py` y `Frontend/` (Etapa 1: Chat Agente de Workspace estilo Gemini con 6 herramientas reales; Etapa 2: Escáner Multimodal de Refacciones) | Dotar al proyecto de una interfaz web ejecutiva e interactiva bajo el estándar `ui-ux-pro-max` |
+| 2026-11-07 | Cierre de Etapa 2 (`VisionScannerView.tsx`) y arquitectura de streaming XML sin búfer (`<escribir_archivo>` / `<editar_archivo>`) + `reasoning_effort="minimal"` en `src/api.py` | Evitar el búfer de ~100s del proxy Cloudflare de Platica en `tool_calls` JSON extensos y completar `Platica AI Studio v2.0` |
+| 2026-11-07 | Cierre integral del proyecto (`v2.0`): `Escáner de Refacciones` como vista principal, persistencia `data/fotos_subidas/`, trabajos SSE reanudables (`JOBS_CHAT`) inmunes a Vite HMR/`F5` y absorción de `openai.APIError` en mitad de stream ante picos `"model at capacity"` de xAI | Garantizar continuidad conversacional, trazabilidad de imágenes subidas y resiliencia total en producción |

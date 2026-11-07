@@ -205,11 +205,10 @@ export const GeminiChatView: React.FC<GeminiChatViewProps> = ({
                   <div key={msg.id} className="flex items-start gap-4">
                     {/* Ícono estrella Gemini */}
                     <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
-                        msg.isStreaming
-                          ? 'bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-400 text-white animate-pulse shadow-md shadow-blue-500/25'
-                          : 'bg-gradient-to-tr from-blue-600/20 to-indigo-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/25'
-                      }`}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${msg.isStreaming
+                        ? 'bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-400 text-white animate-pulse shadow-md shadow-blue-500/25'
+                        : 'bg-gradient-to-tr from-blue-600/20 to-indigo-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/25'
+                        }`}
                     >
                       <Sparkles className="w-4 h-4" />
                     </div>
@@ -218,7 +217,7 @@ export const GeminiChatView: React.FC<GeminiChatViewProps> = ({
                       {/* Nombre + Estado */}
                       <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                         <span className="font-semibold text-slate-800 dark:text-slate-200">
-                          Platica Gemini Agent
+                          Platica Agent
                         </span>
                         <span className="font-mono text-[11px] opacity-80">grok-4.7</span>
                       </div>
@@ -338,7 +337,7 @@ export const GeminiChatView: React.FC<GeminiChatViewProps> = ({
                   ? 'Pídeme explorar carpetas, leer líneas, crear/editar archivos o correr comandos...'
                   : 'Escribe una consulta para grok-4.7...'
               }
-              aria-label="Mensaje para Platica Gemini Agent"
+              aria-label="Mensaje para Platica Agent"
               disabled={enviando}
               className="w-full resize-none bg-transparent text-[15px] text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none max-h-44 leading-relaxed"
             />
@@ -350,11 +349,10 @@ export const GeminiChatView: React.FC<GeminiChatViewProps> = ({
                   type="button"
                   onClick={onToggleTools}
                   title="Activar o desactivar herramientas sobre archivos y terminal"
-                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${
-                    usarTools
-                      ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/30'
-                      : 'bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 border-transparent'
-                  }`}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${usarTools
+                    ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/30'
+                    : 'bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 border-transparent'
+                    }`}
                 >
                   <Wrench className="w-3.5 h-3.5" />
                   <span>Agente Workspace {usarTools ? 'ON' : 'OFF'}</span>

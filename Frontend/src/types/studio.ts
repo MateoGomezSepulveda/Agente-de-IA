@@ -28,6 +28,8 @@ export interface ChatMessage {
   usage?: UsageTelemetry;
   isStreaming?: boolean;
   error?: boolean;
+  job_id?: string;
+  job_eventos?: number;
 }
 
 export interface ChatSession {
@@ -53,5 +55,5 @@ export interface SaludBackend {
   total_repuestos_catalogo: number;
   unidades_stock_erp: number;
   cotizaciones_generadas: number;
-  fotos_muestra: FotoMuestra[];
+  fotos_muestra?: FotoMuestra[];
 }

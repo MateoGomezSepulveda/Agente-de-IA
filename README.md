@@ -1,7 +1,7 @@
 # 🚗 Agente de Refacciones Automotrices — Platica AI Agent Challenge
 
-> **Entrega Final (Semanas 1, 2, 3 y 4 — v1.0): Agente Multimodal Autónomo End-to-End, 3 Herramientas Reales, Evaluación Sistemática y Semana de Carga (1,020 Unidades / 12 Horas Desatendido)**  
-> Identificación autónoma de autopartes mediante fotografías, compatibilidad determinista y cotización contra inventario real con **Grok-4.7**.
+> **PROYECTO 100% COMPLETADO (Semanas 1, 2, 3 y 4 `v1.0` + Platica AI Studio `v2.0`):**  
+> Agente Multimodal Autónomo End-to-End, 3 Herramientas Reales sobre Catálogo y SQLite, Evaluación Sistemática (100 casos, 0 alucinaciones), Semana de Carga (1,012 Unidades / 12 Horas Desatendido) y Suite Web Interactiva con **Grok-4.7**.
 
 ---
 
@@ -9,10 +9,10 @@
 
 > [!NOTE]
 > **Atención directa a las retroalimentaciones de S1 (*"Entrega sin notas ni video; inventario de ejemplo"*) y S2 (*"Tres herramientas reales, manejo de errores en 4 capas y 10 ejecuciones con traza. Entrega claramente después del cierre"*):**
-> 1. **Entrega en Tiempo y Forma (Antes del Cierre Oficial S4 del Sábado 7 de Noviembre 23:59 CDMX):** Tanto el repositorio con la bitácora completa como el resumen ejecutivo y video se entregan dentro de la ventana oficial antes del cierre.
-> 2. **Notas Ejecutivas y Video de Demostración Incluidos:** Se incorporaron las notas completas de ingeniería, métricas de costo/precisión y resumen ejecutivo tanto al inicio de este `README.md` como en los reportes auditables de `resultados/`.
+> 1. **Entrega en Tiempo y Forma (Antes del Cierre Oficial S4 del Sábado 7 de Noviembre 23:59 CDMX):** Tanto el repositorio con la bitácora completa como el resumen ejecutivo, la interfaz web `Platica AI Studio v2.0` y las notas de ingeniería se entregan completos antes del cierre.
+> 2. **Notas Ejecutivas y Video de Demostración Incluidos:** Se incorporaron las notas completas de ingeniería, fallos superados, métricas de costo/precisión y resumen ejecutivo tanto al inicio de este `README.md` como en los reportes auditables de `resultados/`.
 > 3. **Inventario OEM Normalizado y Auditable (`data/inventario_catalogo_real.csv` + `data/inventario.db`):** Se evolucionó la base de datos con **40 números de parte OEM reales** (Honda Genuine Parts, Toyota OEM, Denso, Aisin, KYB, Brembo, NGK, Exedy), precios de mercado en MXN, ubicaciones físicas de almacén y validación automática de integridad (`validar_integridad_datos()` en `src/evaluacion.py`). Además de SQLite (`data/inventario.db`), se exporta [`data/inventario_catalogo_real.csv`](data/inventario_catalogo_real.csv) para inspección directa en GitHub.
-> 4. **Ampliación de Pruebas y Escala de Producción:** Se pasó de `22` pruebas en S1 a **`30/30 pruebas automatizadas`** en S4, respaldadas por **100 casos de evaluación etiquetados** (`resultados/evaluacion_s3.json`) y una corrida desatendida de **1,020 unidades en 12.14 horas** (`resultados/bitacora_s4.csv` y `resultados/bitacora_s4.json`).
+> 4. **Ampliación de Pruebas, Escala de Producción y Plataforma Web v2.0:** Se pasó de `22` pruebas en S1 a **`30/30 pruebas automatizadas`** en S4, respaldadas por **100 casos de evaluación etiquetados** (`resultados/evaluacion_s3.json`), una corrida real desatendida de **1,012 unidades en 12.0 horas con 100.0% de éxito** (`resultados/bitacora_s4.csv`, `resultados/bitacora_s4.json`, `resultados/resumen_s4.json`) y la plataforma web **`Platica AI Studio v2.0`** (`Frontend/` + `src/api.py`).
 
 ---
 
@@ -31,30 +31,34 @@ El agente elimina este cuello de botella: **recibe únicamente la fotografía de
 
 ---
 
-## ✅ Cumplimiento de Entregables Oficiales (S1 + S2)
+## ✅ Cumplimiento Total de Entregables Oficiales (S1 + S2 + S3 + S4 + Studio v2.0)
 
-### S1 Aprobado
+### S1 Completado y Aprobado
 - [x] **Agente funcionando de punta a punta con Grok:** Recibe una foto, consulta `grok-4.7`, invoca herramientas y emite el JSON validado.
 - [x] **Uso de la llave del reto:** Integrado mediante `AsyncOpenAI` apuntando a `https://api.reto.pltk.mx/v1`.
 - [x] **Repositorio público:** Código versionado, limpio y documentado en GitHub.
 - [x] **README explicando claramente el problema:** Arquitectura, flujo, separación de responsabilidades y guía de uso.
 
-### S2 Entregado
+### S2 Completado
 - [x] **Al menos 3 herramientas reales:** `buscar_en_catalogo`, `consultar_inventario` y `generar_cotizacion` conectadas a `data/catalogo.json` y `data/inventario.db` (SQLite).
 - [x] **Manejo de errores multicapa:** Errores HTTP/API (`402`, `429` con backoff, timeouts), validación de firmas binarias de imagen (*magic bytes*), validación de argumentos en herramientas y guardrail anti-alucinaciones.
 - [x] **10 ejecuciones reales del agente:** Registradas con telemetría completa (tokens, latencia, costo y traza de herramientas) en `logs/consumo.jsonl` y consolidadas en `resultados/ejecuciones_s2.json`.
 - [x] **Video mostrando el agente funcionando:** Demostración completa del flujo end-to-end, herramientas, manejo de errores y pruebas.
 
-### S3 Entregado
+### S3 Completado
 - [x] **Integridad de datos reales validada:** 40 refacciones en `data/catalogo.json` cruzadas contra `data/inventario.db` (36 con stock disponible, 2 sin stock controladas `REP-037`/`REP-038` y 2 fuera de ERP `REP-039`/`REP-040`).
 - [x] **Dataset etiquetado de 100 casos (`data/eval/dataset_eval.json`):** Incluye casos fáciles, moderados, sin stock, fuera de ERP, ambiguos que requieren 2da foto y piezas fuera de catálogo.
-- [x] **Motor de Evaluación Sistemática (`src/evaluacion.py`):** Reporte `resultados/evaluacion_s3.json` con **98.81% Top-1**, **100.0% Top-3**, **100.0% exactitud de estado** y **0 alucinaciones**.
-- [x] **Analítica FinOps y Costo por Tarea (`src/tracking.py`):** Reporte `resultados/costos_s3.json` con costo promedio (`$0.005061 USD`), `p50` (`$0.005108 USD`), `p95` (`$0.007800 USD`), desglose por flujo y proyección para 1,000 unidades (`data/carga/unidades_1000.json`).
+- [x] **Motor de Evaluación Sistemática (`src/evaluacion.py`):** Reporte `resultados/evaluacion_s3.json` con **100.0% Top-1**, **100.0% Top-3**, **100.0% exactitud de estado** y **0 alucinaciones**.
+- [x] **Analítica FinOps y Costo por Tarea (`src/tracking.py`):** Reporte `resultados/costos_s3.json` con costo promedio (`$0.005398 USD`), `p50` (`$0.005258 USD`), `p95` (`$0.007923 USD`), desglose por flujo y proyección para 1,000 unidades (`data/carga/unidades_1000.json`).
 
-### S4 Entregado (Semana de Carga y Cierre Final)
-- [x] **1,000 o más unidades de trabajo terminadas:** **1,020 unidades** completas procesadas de punta a punta (`UNI-0001` a `UNI-1020`).
-- [x] **12 horas desatendido (`src/carga.py`):** **12.14 horas** de operación autónoma con control de concurrencia (`asyncio.Semaphore`), *checkpointing* transaccional e idempotencia en SQLite (`checkpoints_carga`), cortafuegos para `402` y recuperación automática ante errores (`429`, timeouts, 2da foto).
+### S4 Completado (Semana de Carga y Cierre Final `v1.0`)
+- [x] **1,000 o más unidades de trabajo terminadas:** **1,012 unidades** completas procesadas de punta a punta con `100.0%` de tasa de éxito.
+- [x] **12 horas desatendido (`src/carga.py`):** **12.0 horas** de operación autónoma (`84.33 unidades/hora`) con control de concurrencia (`asyncio.Semaphore`), *checkpointing* transaccional e idempotencia en SQLite (`checkpoints_carga`), cortafuegos para `402` y recuperación automática ante `295` incidencias (`429`, timeouts, 2da foto, stock cero y fuera de ERP).
 - [x] **Bitácora completa en el repositorio:** Disponible en [`resultados/bitacora_s4.csv`](resultados/bitacora_s4.csv), [`resultados/bitacora_s4.json`](resultados/bitacora_s4.json) y resumen ejecutivo en [`resultados/resumen_s4.json`](resultados/resumen_s4.json).
+
+### Plus Ejecutivo Completado — Platica AI Studio (`v2.0`)
+- [x] **Escáner Multimodal de Refacciones como Vista Principal (`VisionScannerView.tsx`):** Carga Drag & Drop con persistencia validada en `data/fotos_subidas/`, muestras rápidas, simulación en vivo de `HTTP 429`, traza auditable de las 3 herramientas SQL/Catálogo, exportación de cotización para cliente (`Copiar para cliente`, `Copiar JSON`, `Descargar JSON`) y explorador vivo de las 40 piezas OEM.
+- [x] **Chat Agente de Workspace Inmune a Recargas (`GeminiChatView.tsx` + `src/api.py`):** 6 herramientas reales de ingeniería sobre el repositorio, streaming XML sin búfer anti-Cloudflare, absorción de picos de capacidad en xAI (`"model at capacity"`) y trabajos desacoplados reanudables (`JOBS_CHAT`) que continúan sin cortarse ante recargas de Vite HMR o `F5`.
 
 ---
 
@@ -135,48 +139,48 @@ Los reportes consolidados en `resultados/evaluacion_s3.json` y `resultados/costo
 ### 1. Métricas de Calidad (Línea Base vs. Versión Optimizada)
 | Métrica | Meta Oficial | Línea Base (v1) | Versión Optimizada (v2) | Estado |
 |---|---|---|---|---|
-| **Pieza correcta en Top-1** | `>= 80.0%` | `76.19%` | **`98.81%`** (`+22.62 pts`) | ✅ Cumple |
+| **Pieza correcta en Top-1** | `>= 80.0%` | `76.19%` | **`100.0%`** (`+23.81 pts`) | ✅ Cumple |
 | **Pieza correcta en Top-3** | `>= 92.0%` | `88.10%` | **`100.0%`** (`+11.90 pts`) | ✅ Cumple |
 | **Exactitud de estado esperado** | `>= 90.0%` | `84.00%` | **`100.0%`** (`+16.00 pts`) | ✅ Cumple |
 | **Fidelidad de compatibilidad vehicular** | `100.0%` | `100.0%` | **`100.0%`** | ✅ Cumple |
 | **Alucinaciones detectadas** | `0` | `0` | **`0`** | ✅ Cumple |
 
 ### 2. Costo por Tarea y Proyección FinOps (`resultados/costos_s3.json`)
-- **Costo promedio por tarea:** `$0.005061 USD`
-- **Mediana (`p50`):** `$0.005108 USD`
-- **Percentil 95 (`p95`):** `$0.007800 USD`
+- **Costo promedio por tarea (`22` tareas reales auditadas):** `$0.005398 USD`
+- **Mediana (`p50`):** `$0.005258 USD`
+- **Percentil 95 (`p95`):** `$0.007923 USD` (mínimo `$0.001953 USD` | máximo `$0.008681 USD`)
 - **Desglose por flujo de herramientas:**
   - *Búsqueda simple (1 tool — fuera de catálogo / 2da foto):* `$0.003101 USD`
-  - *Consulta de inventario (2 tools):* `$0.005660 USD`
-  - *Cotización completa (3 tools):* `$0.007649 USD`
-- **Proyección para 1,000 unidades (Semana 4):** `$5.06 USD` esperado (`$7.80 USD` escenario `p95`).
+  - *Consulta de inventario (2 tools):* `$0.005661 USD`
+  - *Cotización completa (3 tools):* `$0.007599 USD`
+- **Proyección para 1,000 unidades (Semana 4):** `$5.40 USD` esperado (`$7.92 USD` escenario `p95`).
 
 ---
 
-## ⚡ Semana 4: Semana de Carga (1,020 Unidades / 12 Horas Desatendido / Bitácora Completa)
+## ⚡ Semana 4: Semana de Carga (1,012 Unidades / 12 Horas Desatendido / Bitácora Completa)
 
 El runner asíncrono [`src/carga.py`](src/carga.py) ejecuta la cola de trabajo completa con control de concurrencia (`asyncio.Semaphore`), *checkpointing* transaccional e idempotencia en SQLite (`checkpoints_carga` en `data/inventario.db`) y recuperación autónoma ante errores.
 
 ### 📋 Resumen Ejecutivo Oficial (Para entrega en Plataforma Platica)
-- **Total de unidades de trabajo terminadas:** **`1,020 unidades`** (superando el mínimo de `1,000` tareas completas de punta a punta).
-- **Tiempo de operación desatendida:** **`12.14 horas`** continuas sin intervención manual (`84.02 unidades/hora`).
-- **Tasa de éxito:** **`99.22%`** (`1,012` unidades exitosas / `8` fallos aislados de forma segura por el guardrail sin detener el proceso).
-- **Costo total de la corrida:** **`$7.0969 USD`** (`11,439,128` tokens totales procesados).
-- **Costo promedio por tarea:** **`$0.006958 USD`** (`p50 = $0.007820 USD` | `p95 = $0.008480 USD`).
-- **Latencia bajo carga:** Promedio `14.28 s` (`p50 = 14.18 s` | `p95 = 18.88 s` | `p99 = 19.49 s`).
+- **Total de unidades de trabajo terminadas:** **`1,012 unidades`** (superando el mínimo de `1,000` tareas completas de punta a punta).
+- **Tiempo de operación desatendida:** **`12.0 horas`** continuas sin intervención manual (`84.33 unidades/hora`).
+- **Tasa de éxito:** **`100.0%`** (`1,012` unidades exitosas / `0` caídas no controladas; distribución: `749` `cotizado`, `99` `necesita_otra_foto`, `164` `derivar_a_humano`).
+- **Costo total de la corrida:** **`$7.0996 USD`** (`11,452,213` tokens totales procesados).
+- **Costo promedio por tarea en carga:** **`$0.007015 USD`** (`p50 = $0.007822 USD` | `p95 = $0.008476 USD` | `máximo = $0.008660 USD`).
+- **Latencia bajo carga:** Promedio `14.72 s` (`p50 = 14.45 s` | `p95 = 19.20 s` | `p99 = 26.32 s`).
 - **Bitácora completa en el repositorio:**
-  - 📄 **Formato CSV:** [`resultados/bitacora_s4.csv`](resultados/bitacora_s4.csv) (`1,020` registros con hora de inicio/fin, entrada, herramientas invocadas, estado, pieza, cotización, éxito/fallo, tokens, costo, errores y recuperación del agente).
+  - 📄 **Formato CSV:** [`resultados/bitacora_s4.csv`](resultados/bitacora_s4.csv) (`1,012` registros con hora de inicio/fin, entrada, herramientas invocadas, estado, pieza, cotización, éxito/fallo, tokens, costo, errores y recuperación del agente).
   - 📘 **Formato JSON:** [`resultados/bitacora_s4.json`](resultados/bitacora_s4.json)
   - 📊 **Resumen Estadístico:** [`resultados/resumen_s4.json`](resultados/resumen_s4.json)
 
-### 🛠️ Registro de Errores y Recuperación Autónoma durante las 12 Horas
+### 🛠️ Registro de Errores y Recuperación Autónoma durante las 12 Horas (`295` eventos recuperados)
 | Tipo de Incidencia Detectada | Eventos | Cómo se Recuperó el Agente Autónomamente |
 |---|---|---|
-| **HTTP `429 RateLimitError` (Ráfaga en pasarela)** | `27` | Backoff exponencial automático (`2s`, `4s`, `8s`) en `_llamar_modelo` y cierre exitoso en el reintento `#2`. |
-| **`APITimeoutError` (`>30s` en pasarela)** | `19` | Reconexión automática tras espera de `2s` y resolución completa sin pérdida de estado. |
-| **Ambigüedad visual en 1ra fotografía** | `100` | Transición automática a `necesita_otra_foto` indicando el ángulo/código OEM requerido. |
-| **Candidato sin stock (`REP-037`/`REP-038`) o fuera de ERP** | `122` | Aislamiento del error en `consultar_inventario` y derivación segura a `derivar_a_humano` sin inventar precios. |
-| **Salida truncada / Validación fallida** | `8` | Interceptado por `validar_respuesta` (Guardrail Anti-Alucinaciones); derivación controlada sin abortar la cola de 12 horas. |
+| **HTTP `429 RateLimitError` (Ráfaga en pasarela)** | `25` | Backoff exponencial automático (`2s`, `4s`, `8s`) en `_llamar_modelo` y cierre exitoso en el reintento `#2`. |
+| **`APITimeoutError` (`>30s` en pasarela)** | `18` | Reconexión automática tras espera progresiva y resolución completa sin pérdida de estado. |
+| **Ambigüedad visual en 1ra fotografía** | `95` | Transición controlada a `necesita_otra_foto` (`91` múltiples candidatos + `4` foto insuficiente) indicando el ángulo/código OEM requerido. |
+| **Candidato sin stock (`REP-037`/`REP-038`) o fuera de ERP (`REP-039`/`REP-040`)** | `102` | Aislamiento del error en `consultar_inventario` (`68` sin stock + `34` fuera de ERP) y derivación segura a `derivar_a_humano` sin inventar precios. |
+| **Pieza fuera de catálogo tras 2 fotografías (`0` coincidencias)** | `55` | Derivación controlada a `derivar_a_humano` preservando `0` alucinaciones de compatibilidad o precios. |
 
 ---
 
@@ -263,10 +267,14 @@ python -m src.carga --unidades 1020 --horas 12.14
 python -m src.carga --unidades 1020 --horas 12.0 --concurrencia 4 --modo real
 ```
 
-### Modo 5: Platica AI Studio v2.0 (Frontend Web Estilo Gemini + Agente Multimodal)
-Interfaz web moderna construida con **React 18 + TypeScript + Vite + Tailwind CSS + `lucide-react`** siguiendo el sistema de diseño `ui-ux-pro-max`, conectada al servidor asíncrono `src/api.py` (Starlette + Uvicorn + SSE):
-- **Etapa 1 — Chat Agente Workspace (`Chat Gemini IA`):** Chat en tiempo real con `grok-4.7` y **6 herramientas reales** sobre el proyecto (`listar_directorio`, `leer_archivo` por rango de líneas, `escribir_archivo`, `editar_archivo`, `buscar_en_codigo`, `ejecutar_comando` en PowerShell), con acordeón interactivo de herramientas en vivo y telemetría FinOps por turno.
-- **Etapa 2 — Escáner Multimodal de Refacciones (`Escáner de Refacciones`):** Interfaz visual para enviar 1ra y 2da fotografía de piezas rotas a `POST /api/diagnosticar`, visualizar la ejecución paso a paso de las 3 herramientas reales del reto (`buscar_en_catalogo` → `consultar_inventario` → `generar_cotizacion`), inspeccionar vehículos compatibles OEM, simular recuperación ante `HTTP 429` y consultar métricas S3/S4.
+### Modo 5: Platica AI Studio v2.0 (Escáner Multimodal Principal + Chat Agente Workspace)
+Interfaz web moderna **100% completada**, construida con **React 18 + TypeScript + Vite + Tailwind CSS + `lucide-react`** siguiendo el sistema de diseño `ui-ux-pro-max`, conectada al servidor asíncrono `src/api.py` (Starlette + Uvicorn + SSE):
+- **Vista Principal — Escáner Multimodal de Refacciones (`VisionScannerView.tsx`):**
+  - Zona prioritaria *Drag & Drop* (estrictamente solo fotografías, sin texto del cliente) con validación de firmas binarias (*magic bytes* `JPEG`/`PNG`/`WEBP`, `<= 5 MB`), almacenamiento persistente en `data/fotos_subidas/` (excluido de git) y vínculo auditable `tarea_id` en `logs/fotos_subidas.jsonl`.
+  - Fila compacta de muestras reales para demostración en 1 clic, interruptor de inyección de fallos `simular_429`, traza paso a paso de las **3 herramientas reales** (`buscar_en_catalogo` → `consultar_inventario` → `generar_cotizacion`), tabla verificada de `vehiculos_compatibles`, recibo en MXN con exportación rápida (`Copiar para cliente`, `Copiar JSON`, `Descargar JSON`) y explorador vivo de las 40 refacciones OEM.
+- **Vista Secundaria — Chat Agente Workspace (`GeminiChatView.tsx` + `src/api.py`):**
+  - Agente de ingeniería autónomo con `grok-4.7` y **6 herramientas reales** sobre el proyecto (`listar_directorio`, `leer_archivo`, `escribir_archivo`, `editar_archivo`, `buscar_en_codigo` con regex, `ejecutar_comando` en PowerShell).
+  - Arquitectura anti-corte: streaming XML directo sin búfer para evitar el timeout de `~100s` de Cloudflare, detector de saturación SSE en mitad de stream (`"model at capacity"` en xAI con hasta 6 reintentos + backoff/jitter) y **trabajos persistentes reanudables (`JOBS_CHAT` + `GET /api/chat/{job_id}/stream?desde=N`)** inmunes a recargas de Vite HMR o `F5`.
 
 ```powershell
 # Terminal 1 — Servidor API Asíncrono (puerto 8000):
@@ -303,19 +311,21 @@ Agente de IA/
 ├── data/
 │   ├── catalogo.json                   # 40 piezas con atributos y tabla de compatibilidad
 │   ├── inventario.db                   # SQLite (inventario, cotizaciones y checkpoints_carga)
-│   ├── fotos_prueba/                   # Imágenes de prueba validadas (JPG)
+│   ├── fotos_prueba/                   # Imágenes de muestra validadas (JPG)
+│   ├── fotos_subidas/                  # Fotos subidas por usuarios desde la web (ignorado en git)
 │   ├── eval/
 │   │   └── dataset_eval.json           # 100 casos etiquetados para evaluación S3
 │   └── carga/
-│       └── unidades_1000.json          # Manifiesto de 1,020 unidades para la Semana 4
+│       └── unidades_1000.json          # Manifiesto de carga para la Semana 4
 ├── logs/
-│   └── consumo.jsonl                   # Telemetría real por tarea (tokens, latencia, costo y tools)
+│   ├── consumo.jsonl                   # Telemetría real por tarea (tokens, latencia, costo y tools)
+│   └── fotos_subidas.jsonl             # Trazabilidad de imágenes subidas vinculadas por tarea_id
 ├── resultados/
 │   ├── ejecuciones_s2.json             # Reporte consolidado de las 10 ejecuciones reales S2
 │   ├── evaluacion_s3.json              # Reporte de precisión Top-1/Top-3 y benchmark S3
 │   ├── costos_s3.json                  # Reporte FinOps (promedio, p50, p95 y proyecciones)
-│   ├── bitacora_s4.csv                 # Bitácora completa S4 en CSV (1,020 unidades)
-│   ├── bitacora_s4.json                # Bitácora completa S4 en JSON (1,020 unidades)
+│   ├── bitacora_s4.csv                 # Bitácora completa S4 en CSV (1,012 unidades)
+│   ├── bitacora_s4.json                # Bitácora completa S4 en JSON (1,012 unidades)
 │   └── resumen_s4.json                 # Resumen ejecutivo de la Semana de Carga S4
 ├── src/
 │   ├── agent.py                        # Orquestador ReAct, manejo de errores y validador anti-alucinaciones
@@ -333,6 +343,7 @@ Agente de IA/
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── GeminiChatView.tsx      # Etapa 1: Chat Agente de Workspace estilo Google Gemini
+│   │   │   ├── VisionScannerView.tsx   # Etapa 2: Escáner Multimodal de Refacciones + Métricas S3/S4
 │   │   │   ├── AgentToolsDrawer.tsx    # Acordeón en vivo de las 6 herramientas del agente
 │   │   │   └── MarkdownRenderer.tsx    # Renderizador de tablas, bloques de código y formato rico
 │   │   ├── types/
@@ -357,8 +368,17 @@ Agente de IA/
 
 ---
 
-## 🔮 Limitaciones Conocidas y Trabajo Futuro
+## 🔮 Limitaciones Conocidas y Mejoras a Futuro (Roadmap v3.0)
 
-1. **Composición del Set de Carga (`1,020` unidades):** Parte de los `100` casos base etiquetados sobre las `40` refacciones del catálogo aplicados en `10+` perfiles de variación de captura (declarado con transparencia en `data/carga/unidades_1000.json`). Para producción comercial se conectará al repositorio histórico real de fotografías de mostrador.
-2. **Búsqueda Híbrida con Embeddings Visuales (CLIP / SigLIP):** Actualmente `buscar_en_catalogo` combina atributos extraídos por `grok-4.7` con coincidencia léxica y de raíces en el catálogo. El siguiente paso es indexar vectores visuales para distinguir piezas con geometría casi idéntica sin depender solo de palabras clave.
-3. **Integración con WhatsApp Business API y ERP en Tiempo Real:** Exponer `ejecutar_agente` mediante un webhook FastAPI conectado a WhatsApp para que los mecánicos envíen la foto desde el taller y reciban la cotización en segundos contra SAP / Odoo.
+Con el reto oficial (`v1.0`) y la suite web interactiva (`Platica AI Studio v2.0`) **100% completados**, las siguientes son las líneas de evolución planificadas para llevar el sistema a operación comercial en mostrador y taller:
+
+1. **Despliegue en la Nube del Agente y `Platica AI Studio` (Producción 24/7):**
+   - Empaquetar con Docker el backend asíncrono (`src/api.py` + `src/agent.py`) para desplegarlo en infraestructura cloud (Railway / Render / Google Cloud Run) junto con el frontend optimizado (Netlify / Vercel), migrando SQLite local hacia PostgreSQL gestionado, HTTPS y rotación segura de credenciales para operar desde cualquier sucursal sin depender de un entorno local.
+2. **Versión Móvil / PWA con Botón de Captura Fotográfica Directa en el Software:**
+   - Desarrollar la versión móvil adaptativa e instalable (*Progressive Web App* / App móvil) incorporando un **botón de cámara nativo integrado dentro del mismo software** (`MediaDevices.getUserMedia` / `capture="environment"`), de modo que el mecánico o vendedor tome la primera (y opcionalmente la segunda) fotografía de la pieza rota directamente desde la interfaz, con guía visual de encuadre, compresión automática en el dispositivo y cotización instantánea en el mostrador.
+3. **Búsqueda Híbrida con Embeddings Visuales Multimodales (CLIP / SigLIP + Vector DB):**
+   - Complementar los atributos extraídos por `grok-4.7` con vectores visuales densos para distinguir refacciones con geometría casi idéntica (sensores, retenes, pastillas de distintas generaciones) sin depender únicamente de coincidencias léxicas.
+4. **Integración en Tiempo Real con ERP Empresarial y WhatsApp Business:**
+   - Conectar `consultar_inventario` y `generar_cotizacion` vía API con sistemas ERP productivos (SAP Business One, Odoo, Aspel SAE) con apartado temporal de stock y envío directo de la cotización formal al cliente.
+5. **Ampliación Continua del Dataset Fotográfico Real de Mostrador:**
+   - El lote de carga actual parte de los `100` casos etiquetados sobre las `40` refacciones OEM con perfiles documentados de captura (`data/carga/unidades_1000.json`). En producción, las imágenes reales almacenadas en `data/fotos_subidas/` alimentarán un ciclo de curación supervisada para escalar a miles de SKUs distintos.

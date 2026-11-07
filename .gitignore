@@ -27,3 +27,6 @@ node_modules/
 Frontend/node_modules/
 Frontend/dist/
 *.tsbuildinfo
+
+# Fotos subidas por usuarios desde el escáner web (privadas, no versionar)
+data/fotos_subidas/

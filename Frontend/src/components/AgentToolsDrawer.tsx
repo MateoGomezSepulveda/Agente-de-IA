@@ -61,19 +61,19 @@ function formatearArgumentoPrincipal(herramienta: string, args: Record<string, u
     return String(args.ruta || '.');
   }
   if (herramienta === 'leer_archivo') {
-    const ruta = String(args.ruta || '');
+    const ruta = String(args.ruta || 'preparando...');
     const ini = args.linea_inicio ? `L${args.linea_inicio}` : '';
     const fin = args.linea_fin ? `-L${args.linea_fin}` : '';
     return ini ? `${ruta} (${ini}${fin})` : ruta;
   }
   if (herramienta === 'escribir_archivo' || herramienta === 'editar_archivo') {
-    return String(args.ruta || '');
+    return String(args.ruta || 'generando código...');
   }
   if (herramienta === 'buscar_en_codigo') {
-    return `"${String(args.patron || '')}"`;
+    return `"${String(args.patron || '...')}"`;
   }
   if (herramienta === 'ejecutar_comando') {
-    return String(args.comando || '');
+    return String(args.comando || 'preparando comando...');
   }
   return JSON.stringify(args);
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Activity,
   Coins,
   Cpu,
   MessageSquare,
@@ -14,6 +13,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { GeminiChatView } from './components/GeminiChatView';
+import { VisionScannerView } from './components/VisionScannerView';
 import {
   AgentToolStep,
   ChatMessage,
@@ -24,6 +24,7 @@ import {
 
 const STORAGE_KEY_SESSIONS = 'platica_ai_studio_sessions_v2';
 const STORAGE_KEY_THEME = 'platica_ai_studio_theme_v2';
+const STORAGE_KEY_MODO = 'platica_ai_studio_modo_v2';
 
 function crearSesionInicial(): ChatSession {
   const ahora = new Date().toISOString();
@@ -37,7 +38,14 @@ function crearSesionInicial(): ChatSession {
 }
 
 export const App: React.FC = () => {
-  const [modo, setModo] = useState<StudioMode>('chat');
+  // La página principal del proyecto es el Escáner de Refacciones; se recuerda la última pestaña usada.
+  const [modo, setModoState] = useState<StudioMode>(() =>
+    localStorage.getItem(STORAGE_KEY_MODO) === 'chat' ? 'chat' : 'vision'
+  );
+  const setModo = (nuevo: StudioMode) => {
+    localStorage.setItem(STORAGE_KEY_MODO, nuevo);
+    setModoState(nuevo);
+  };
   const [sidebarAbierto, setSidebarAbierto] = useState(true);
   const [usarTools, setUsarTools] = useState(true);
   const [temaOscuro, setTemaOscuro] = useState<boolean>(() => {
@@ -151,9 +159,232 @@ export const App: React.FC = () => {
     );
   };
 
+  const sesionesRef = useRef<ChatSession[]>(sesiones);
+  sesionesRef.current = sesiones;
+  const jobActivoRef = useRef<string | null>(null);
+  const contadorEventosRef = useRef<number>(0);
+  const reanudandoRef = useRef<Set<string>>(new Set());
+
+  const esperar = (ms: number) => new Promise<void>((resolver) => setTimeout(resolver, ms));
+
+  const patchMensaje = (sesionId: string, msgId: string, fn: (m: ChatMessage) => ChatMessage) => {
+    setSesiones((prev) =>
+      prev.map((s) =>
+        s.id !== sesionId
+          ? s
+          : { ...s, mensajes: s.mensajes.map((m) => (m.id === msgId ? fn(m) : m)) }
+      )
+    );
+  };
+
+  const marcarCorte = (sesionId: string, msgId: string, aviso: string) => {
+    patchMensaje(sesionId, msgId, (m) => ({
+      ...m,
+      isStreaming: false,
+      content: (m.content ? `${m.content}\n\n` : '') + aviso,
+    }));
+  };
+
   const handleDetenerGeneracion = () => {
+    const jobId = jobActivoRef.current;
+    if (jobId) {
+      fetch(`/api/chat/${jobId}/cancel`, { method: 'POST' }).catch(() => undefined);
+    }
     abortControllerRef.current?.abort();
   };
+
+  /** Lee un stream SSE (inicial o reanudado) y aplica cada evento al mensaje del asistente. */
+  const consumirStream = async (
+    response: Response,
+    sesionId: string,
+    msgId: string,
+    eventosIniciales: number
+  ): Promise<boolean> => {
+    if (!response.body) throw new Error('La respuesta no trae cuerpo de streaming.');
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder('utf-8');
+    let buffer = '';
+    let recibioFin = false;
+    contadorEventosRef.current = eventosIniciales;
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+
+      const eventos = buffer.split('\n\n');
+      buffer = eventos.pop() || '';
+
+      for (const ev of eventos) {
+        const linea = ev.trim();
+        if (!linea.startsWith('data:')) continue;
+        const jsonStr = linea.slice(5).trim();
+        if (!jsonStr) continue;
+
+        // Cada evento 'data:' cuenta, aunque falle el parseo, para que el índice de reanudación coincida con el servidor
+        contadorEventosRef.current += 1;
+        const n = contadorEventosRef.current;
+
+        let payload: Record<string, any>;
+        try {
+          payload = JSON.parse(jsonStr);
+        } catch {
+          continue;
+        }
+
+        if (payload.tipo === 'job') {
+          jobActivoRef.current = payload.job_id;
+          patchMensaje(sesionId, msgId, (m) => ({ ...m, job_id: payload.job_id, job_eventos: n }));
+        } else if (payload.tipo === 'token') {
+          patchMensaje(sesionId, msgId, (m) => ({
+            ...m,
+            content: m.content + payload.contenido,
+            job_eventos: n,
+          }));
+        } else if (payload.tipo === 'tool_inicio') {
+          const nuevoPaso: AgentToolStep = {
+            id: payload.id,
+            iteracion: payload.iteracion || 1,
+            herramienta: payload.herramienta,
+            argumentos: payload.argumentos || {},
+            estado: 'running',
+            resumen: 'Generando código / argumentos...',
+          };
+          patchMensaje(sesionId, msgId, (m) => ({
+            ...m,
+            pasos_herramientas: [...(m.pasos_herramientas || []), nuevoPaso],
+            job_eventos: n,
+          }));
+        } else if (payload.tipo === 'tool_progreso') {
+          patchMensaje(sesionId, msgId, (m) => ({
+            ...m,
+            job_eventos: n,
+            pasos_herramientas: (m.pasos_herramientas || []).map((p) =>
+              p.id === payload.id
+                ? {
+                    ...p,
+                    argumentos: payload.ruta_parcial
+                      ? { ...p.argumentos, ruta: payload.ruta_parcial }
+                      : p.argumentos,
+                    resumen: `Escribiendo (${Number(payload.caracteres || 0).toLocaleString()} chars)...`,
+                  }
+                : p
+            ),
+          }));
+        } else if (payload.tipo === 'tool_fin') {
+          patchMensaje(sesionId, msgId, (m) => ({
+            ...m,
+            job_eventos: n,
+            pasos_herramientas: (m.pasos_herramientas || []).map((p) =>
+              p.id === payload.id
+                ? {
+                    ...p,
+                    argumentos: payload.argumentos || p.argumentos,
+                    estado: payload.exito ? 'done' : 'error',
+                    resumen: payload.resumen,
+                    detalle: payload.detalle,
+                    duracion_ms: payload.duracion_ms,
+                  }
+                : p
+            ),
+          }));
+        } else if (payload.tipo === 'fin') {
+          recibioFin = true;
+          patchMensaje(sesionId, msgId, (m) => ({
+            ...m,
+            isStreaming: false,
+            latencia_segundos: payload.latencia_segundos,
+            usage: payload.usage,
+            job_eventos: n,
+          }));
+        } else if (payload.tipo === 'error') {
+          recibioFin = true;
+          patchMensaje(sesionId, msgId, (m) => ({
+            ...m,
+            isStreaming: false,
+            error: true,
+            job_eventos: n,
+            content:
+              (m.content ? `${m.content}\n\n` : '') + `> **Error del servidor:** ${payload.error}`,
+          }));
+        }
+      }
+    }
+    return recibioFin;
+  };
+
+  /** Retoma un trabajo del servidor desde `desde`. Devuelve 'ok' | 'perdido' | 'cortado'. */
+  const seguirJob = async (
+    sesionId: string,
+    msgId: string,
+    jobId: string,
+    desdeInicial: number,
+    signal: AbortSignal
+  ): Promise<'ok' | 'perdido' | 'cortado'> => {
+    let desde = desdeInicial;
+    for (let intento = 0; intento < 5; intento++) {
+      const resp = await fetch(`/api/chat/${jobId}/stream?desde=${desde}`, { signal });
+      if (resp.status === 404) return 'perdido';
+      if (!resp.ok) {
+        await esperar(1500);
+        continue;
+      }
+      const fin = await consumirStream(resp, sesionId, msgId, desde);
+      if (fin) return 'ok';
+      desde = contadorEventosRef.current;
+      await esperar(1000);
+    }
+    return 'cortado';
+  };
+
+  /** Tras recargar la página: retoma la respuesta que el servidor siguió generando. */
+  const retomarJob = async (sesionId: string, msgId: string, jobId: string, desde: number) => {
+    if (reanudandoRef.current.has(jobId)) return;
+    reanudandoRef.current.add(jobId);
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+    jobActivoRef.current = jobId;
+    setEnviando(true);
+    try {
+      const resultado = await seguirJob(sesionId, msgId, jobId, desde, controller.signal);
+      if (resultado === 'perdido') {
+        marcarCorte(
+          sesionId,
+          msgId,
+          '> **Aviso:** El servidor se reinició y perdió el trabajo en curso. Escribe **"continúa"** para retomar.'
+        );
+      } else if (resultado === 'cortado') {
+        marcarCorte(sesionId, msgId, '> **Aviso:** Se perdió la conexión con el servidor. Escribe **"continúa"**.');
+      }
+    } catch (err: unknown) {
+      const isAbort = err instanceof DOMException && err.name === 'AbortError';
+      marcarCorte(
+        sesionId,
+        msgId,
+        isAbort ? '*(Generación detenida por el usuario)*' : '> **Aviso:** No se pudo retomar la respuesta.'
+      );
+    } finally {
+      reanudandoRef.current.delete(jobId);
+      setEnviando(false);
+      abortControllerRef.current = null;
+      jobActivoRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    // Al montar: cualquier respuesta que quedó "en streaming" se retoma desde el servidor (o se cierra si nunca arrancó)
+    for (const s of sesionesRef.current) {
+      for (const m of s.mensajes) {
+        if (m.role !== 'assistant' || !m.isStreaming) continue;
+        if (m.job_id) {
+          retomarJob(s.id, m.id, m.job_id, m.job_eventos ?? 0);
+        } else {
+          marcarCorte(s.id, m.id, '*(Respuesta interrumpida antes de iniciar. Vuelve a enviar tu mensaje.)*');
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleEnviarMensaje = async (texto: string) => {
     if (!sesionActiva || enviando) return;
@@ -185,6 +416,9 @@ export const App: React.FC = () => {
       acciones_resumen: m.pasos_herramientas
         ?.map((p) => `${p.herramienta}(${p.resumen || ''})`)
         .join('; '),
+      acciones_detalle: m.pasos_herramientas
+        ?.map((p) => `[${p.herramienta}] ${p.resumen || ''}\n${(p.detalle || '').slice(0, 1800)}`)
+        .join('\n---\n'),
     }));
 
     setSesiones((prev) =>
@@ -205,6 +439,8 @@ export const App: React.FC = () => {
 
     const controller = new AbortController();
     abortControllerRef.current = controller;
+    jobActivoRef.current = null;
+    contadorEventosRef.current = 0;
     setEnviando(true);
 
     try {
@@ -222,172 +458,50 @@ export const App: React.FC = () => {
         throw new Error(`Error HTTP ${response.status} al conectar con el servidor API.`);
       }
 
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder('utf-8');
-      let buffer = '';
+      const recibioFin = await consumirStream(response, targetSessionId, idAssistant, 0);
 
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-
-        const eventos = buffer.split('\n\n');
-        buffer = eventos.pop() || '';
-
-        for (const ev of eventos) {
-          const linea = ev.trim();
-          if (!linea.startsWith('data:')) continue;
-          const jsonStr = linea.slice(5).trim();
-          if (!jsonStr) continue;
-
-          try {
-            const payload = JSON.parse(jsonStr);
-
-            if (payload.tipo === 'token') {
-              setSesiones((prev) =>
-                prev.map((s) =>
-                  s.id !== targetSessionId
-                    ? s
-                    : {
-                        ...s,
-                        mensajes: s.mensajes.map((m) =>
-                          m.id === idAssistant
-                            ? { ...m, content: m.content + payload.contenido }
-                            : m
-                        ),
-                      }
-                )
-              );
-            } else if (payload.tipo === 'tool_inicio') {
-              const nuevoPaso: AgentToolStep = {
-                id: payload.id,
-                iteracion: payload.iteracion || 1,
-                herramienta: payload.herramienta,
-                argumentos: payload.argumentos || {},
-                estado: 'running',
-              };
-              setSesiones((prev) =>
-                prev.map((s) =>
-                  s.id !== targetSessionId
-                    ? s
-                    : {
-                        ...s,
-                        mensajes: s.mensajes.map((m) =>
-                          m.id === idAssistant
-                            ? {
-                                ...m,
-                                pasos_herramientas: [
-                                  ...(m.pasos_herramientas || []),
-                                  nuevoPaso,
-                                ],
-                              }
-                            : m
-                        ),
-                      }
-                )
-              );
-            } else if (payload.tipo === 'tool_fin') {
-              setSesiones((prev) =>
-                prev.map((s) =>
-                  s.id !== targetSessionId
-                    ? s
-                    : {
-                        ...s,
-                        mensajes: s.mensajes.map((m) =>
-                          m.id === idAssistant
-                            ? {
-                                ...m,
-                                pasos_herramientas: (m.pasos_herramientas || []).map((p) =>
-                                  p.id === payload.id
-                                    ? {
-                                        ...p,
-                                        estado: payload.exito ? 'done' : 'error',
-                                        resumen: payload.resumen,
-                                        detalle: payload.detalle,
-                                        duracion_ms: payload.duracion_ms,
-                                      }
-                                    : p
-                                ),
-                              }
-                            : m
-                        ),
-                      }
-                )
-              );
-            } else if (payload.tipo === 'fin') {
-              setSesiones((prev) =>
-                prev.map((s) =>
-                  s.id !== targetSessionId
-                    ? s
-                    : {
-                        ...s,
-                        mensajes: s.mensajes.map((m) =>
-                          m.id === idAssistant
-                            ? {
-                                ...m,
-                                isStreaming: false,
-                                latencia_segundos: payload.latencia_segundos,
-                                usage: payload.usage,
-                              }
-                            : m
-                        ),
-                      }
-                )
-              );
-            } else if (payload.tipo === 'error') {
-              setSesiones((prev) =>
-                prev.map((s) =>
-                  s.id !== targetSessionId
-                    ? s
-                    : {
-                        ...s,
-                        mensajes: s.mensajes.map((m) =>
-                          m.id === idAssistant
-                            ? {
-                                ...m,
-                                isStreaming: false,
-                                error: true,
-                                content: `Error al comunicar con grok-4.7: ${payload.error}`,
-                              }
-                            : m
-                        ),
-                      }
-                )
-              );
-            }
-          } catch {
-            // ignore chunk parse error
+      if (!recibioFin) {
+        // El stream se cortó pero el trabajo sigue en el servidor: retomarlo en vez de abandonar
+        const jobId = jobActivoRef.current;
+        if (jobId) {
+          const resultado = await seguirJob(
+            targetSessionId,
+            idAssistant,
+            jobId,
+            contadorEventosRef.current,
+            controller.signal
+          );
+          if (resultado !== 'ok') {
+            marcarCorte(
+              targetSessionId,
+              idAssistant,
+              '> **Aviso:** La conexión de streaming se cerró antes de finalizar. Escribe **"continúa"** para retomar.'
+            );
           }
+        } else {
+          marcarCorte(
+            targetSessionId,
+            idAssistant,
+            '> **Aviso:** La conexión de streaming se cerró antes de finalizar. Escribe **"continúa"** para retomar.'
+          );
         }
       }
     } catch (err: unknown) {
       const isAbort = err instanceof DOMException && err.name === 'AbortError';
-      setSesiones((prev) =>
-        prev.map((s) =>
-          s.id !== targetSessionId
-            ? s
-            : {
-                ...s,
-                mensajes: s.mensajes.map((m) =>
-                  m.id === idAssistant
-                    ? {
-                        ...m,
-                        isStreaming: false,
-                        error: !isAbort,
-                        content: isAbort
-                          ? m.content || '*(Generación detenida por el usuario)*'
-                          : `No se pudo conectar con el backend local (\`http://127.0.0.1:8000\`). Verifica que \`python src/api.py\` esté corriendo y reiniciado.\n\nDetalle: ${
-                              err instanceof Error ? err.message : String(err)
-                            }`,
-                      }
-                    : m
-                ),
-              }
-        )
-      );
+      patchMensaje(targetSessionId, idAssistant, (m) => ({
+        ...m,
+        isStreaming: false,
+        error: !isAbort,
+        content: isAbort
+          ? m.content || '*(Generación detenida por el usuario)*'
+          : `No se pudo conectar con el backend local (\`http://127.0.0.1:8000\`). Verifica que \`python src/api.py\` esté corriendo y reiniciado.\n\nDetalle: ${
+              err instanceof Error ? err.message : String(err)
+            }`,
+      }));
     } finally {
       setEnviando(false);
       abortControllerRef.current = null;
+      jobActivoRef.current = null;
     }
   };
 
@@ -507,7 +621,7 @@ export const App: React.FC = () => {
             )}
 
             {/* Selector de Modo */}
-            <div className="inline-flex p-1 rounded-full bg-slate-200/80 dark:bg-[#131B2E] border border-slate-300/60 dark:border-white/10">
+            <div className="inline-flex flex-row-reverse p-1 rounded-full bg-slate-200/80 dark:bg-[#131B2E] border border-slate-300/60 dark:border-white/10">
               <button
                 type="button"
                 onClick={() => setModo('chat')}
@@ -571,26 +685,7 @@ export const App: React.FC = () => {
             onIrAEscaner={() => setModo('vision')}
           />
         ) : (
-          <div className="flex-1 flex items-center justify-center p-6">
-            <div className="max-w-lg w-full p-8 rounded-3xl bg-white dark:bg-[#131B2E] border border-slate-200 dark:border-white/10 text-center space-y-4 shadow-xl">
-              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-500 flex items-center justify-center mx-auto">
-                <Activity className="w-6 h-6" />
-              </div>
-              <h2 className="text-xl font-bold">
-                Etapa 2: Escáner Multimodal de Refacciones
-              </h2>
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Apenas validemos el Chat Agente del Workspace, activaremos aquí el flujo interactivo de fotografías de repuestos rotos con las 3 herramientas reales del reto.
-              </p>
-              <button
-                type="button"
-                onClick={() => setModo('chat')}
-                className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors cursor-pointer"
-              >
-                Volver al Chat Agente Workspace
-              </button>
-            </div>
-          </div>
+          <VisionScannerView />
         )}
       </div>
     </div>

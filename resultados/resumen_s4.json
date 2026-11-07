@@ -1,6 +1,6 @@
 {
   "entregable": "S4 - Semana de Carga (1,000+ Unidades, 12 Horas Desatendido y Bitácora Completa)",
-  "fecha_cierre": "2026-11-07T11:32:01",
+  "fecha_cierre": "2026-11-07T12:35:49",
   "modelo": "grok-4.7",
   "endpoint": "https://api.reto.pltk.mx/v1",
   "metricas_principales_plataforma": {
@@ -11,33 +11,33 @@
     "unidades_exitosas": 1012,
     "unidades_fallidas": 0,
     "tasa_exito_pct": 100.0,
-    "costo_total_usd": 7.0698,
-    "costo_promedio_por_tarea_usd": 0.006986
+    "costo_total_usd": 7.0996,
+    "costo_promedio_por_tarea_usd": 0.007015
   },
   "estadisticas_detalladas": {
     "costo_usd": {
-      "total": 7.0698,
-      "promedio_por_tarea": 0.006986,
-      "p50": 0.007828,
-      "p95": 0.00848,
-      "maximo": 0.008618
+      "total": 7.0996,
+      "promedio_por_tarea": 0.007015,
+      "p50": 0.007822,
+      "p95": 0.008476,
+      "maximo": 0.00866
     },
     "latencia_segundos": {
-      "promedio": 14.29,
-      "p50": 14.2,
-      "p95": 18.93,
-      "p99": 19.99
+      "promedio": 14.72,
+      "p50": 14.45,
+      "p95": 19.2,
+      "p99": 26.32
     },
-    "tokens_acumulados": 11395521,
+    "tokens_acumulados": 11452213,
     "throughput_unidades_por_hora": 84.33,
     "distribucion_estados": {
-      "cotizado": 736,
-      "derivar_a_humano": 176,
-      "necesita_otra_foto": 100
+      "cotizado": 749,
+      "necesita_otra_foto": 99,
+      "derivar_a_humano": 164
     },
     "incidentes_y_recuperacion": {
-      "total_eventos_con_incidencia": 310,
-      "recuperados_autonomamente": 310,
+      "total_eventos_con_incidencia": 295,
+      "recuperados_autonomamente": 295,
       "fallos_aislados_por_guardrail": 0,
       "mecanismos_activos": [
         "Backoff exponencial (2s, 4s, 8s) ante HTTP 429 RateLimitError y APITimeoutError",
