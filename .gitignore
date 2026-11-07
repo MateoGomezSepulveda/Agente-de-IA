@@ -21,3 +21,9 @@ __pycache__/
 *.log
 *.mp4
 logs/
+
+# Frontend (Node / Vite)
+node_modules/
+Frontend/node_modules/
+Frontend/dist/
+*.tsbuildinfo

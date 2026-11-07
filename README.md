@@ -263,6 +263,21 @@ python -m src.carga --unidades 1020 --horas 12.14
 python -m src.carga --unidades 1020 --horas 12.0 --concurrencia 4 --modo real
 ```
 
+### Modo 5: Platica AI Studio v2.0 (Frontend Web Estilo Gemini + Agente Multimodal)
+Interfaz web moderna construida con **React 18 + TypeScript + Vite + Tailwind CSS + `lucide-react`** siguiendo el sistema de diseño `ui-ux-pro-max`, conectada al servidor asíncrono `src/api.py` (Starlette + Uvicorn + SSE):
+- **Etapa 1 — Chat Agente Workspace (`Chat Gemini IA`):** Chat en tiempo real con `grok-4.7` y **6 herramientas reales** sobre el proyecto (`listar_directorio`, `leer_archivo` por rango de líneas, `escribir_archivo`, `editar_archivo`, `buscar_en_codigo`, `ejecutar_comando` en PowerShell), con acordeón interactivo de herramientas en vivo y telemetría FinOps por turno.
+- **Etapa 2 — Escáner Multimodal de Refacciones (`Escáner de Refacciones`):** Interfaz visual para enviar 1ra y 2da fotografía de piezas rotas a `POST /api/diagnosticar`, visualizar la ejecución paso a paso de las 3 herramientas reales del reto (`buscar_en_catalogo` → `consultar_inventario` → `generar_cotizacion`), inspeccionar vehículos compatibles OEM, simular recuperación ante `HTTP 429` y consultar métricas S3/S4.
+
+```powershell
+# Terminal 1 — Servidor API Asíncrono (puerto 8000):
+python src/api.py
+
+# Terminal 2 — Aplicación Web Vite + React (puerto 5173):
+cd Frontend
+npm run dev
+```
+Abre **`http://localhost:5173`** en tu navegador.
+
 ---
 
 ## 🧪 Pruebas Automatizadas (30/30 PASSED)
@@ -304,6 +319,7 @@ Agente de IA/
 │   └── resumen_s4.json                 # Resumen ejecutivo de la Semana de Carga S4
 ├── src/
 │   ├── agent.py                        # Orquestador ReAct, manejo de errores y validador anti-alucinaciones
+│   ├── api.py                          # Servidor API Asíncrono (Starlette + SSE) para Platica AI Studio v2.0
 │   ├── carga.py                        # Runner de carga (1,020 unidades, 12h desatendido, SQLite checkpoint)
 │   ├── config.py                       # Configuración y cliente AsyncOpenAI
 │   ├── db.py                           # Consultas SQL parametrizadas y persistencia en SQLite
@@ -313,16 +329,29 @@ Agente de IA/
 │   ├── tools.py                        # Las 3 herramientas reales: catálogo, inventario y cotización
 │   ├── tracking.py                     # Registro de telemetría, percentiles y FinOps
 │   └── vision.py                       # Validación binaria, redimensionado y Base64 de imágenes
+├── Frontend/                           # Aplicación Web Platica AI Studio v2.0 (React 18 + TS + Tailwind)
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── GeminiChatView.tsx      # Etapa 1: Chat Agente de Workspace estilo Google Gemini
+│   │   │   ├── AgentToolsDrawer.tsx    # Acordeón en vivo de las 6 herramientas del agente
+│   │   │   └── MarkdownRenderer.tsx    # Renderizador de tablas, bloques de código y formato rico
+│   │   ├── types/
+│   │   │   └── studio.ts               # Contratos TypeScript de sesiones, telemetría y diagnóstico
+│   │   ├── App.tsx                     # Layout principal, selector de modo, sidebar y tema Dark/Light
+│   │   └── main.tsx                    # Punto de entrada React
+│   ├── package.json
+│   └── vite.config.ts                  # Proxy automático /api -> http://127.0.0.1:8000
 ├── tests/                              # Suite de 30 pruebas automatizadas (pytest)
 ├── scripts/
-│   ├── crear_bd.py                     # Inicializador de la base de datos SQLite
+│   ├── crear_bd.py                     # Inicializador de la base de datos SQLite y CSV verificable
+│   ├── demo_autonomia_s2.py            # Demostración en vivo de las 3 tools reales + recuperación HTTP 429
 │   ├── completar_10_ejecuciones.py     # Ejecutor y consolidador de las 10 corridas reales de S2
 │   ├── generar_carga.py                # Generador del lote de 1,000+ unidades de trabajo
 │   ├── generar_reportes.py             # Generador de reportes de evaluación y costos S3
 │   └── chat.py                         # Consola interactiva del agente
 ├── Reto agente/
 │   └── IA.md                           # Roadmap oficial y bitácora de decisiones del proyecto
-├── README.md                           # Documentación oficial de la entrega final (v1.0)
+├── README.md                           # Documentación oficial del proyecto (v1.0 + v2.0 Studio)
 └── requirements.txt                    # Dependencias fijas del proyecto
 ```
 
