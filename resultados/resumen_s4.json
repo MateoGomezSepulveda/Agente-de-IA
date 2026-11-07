@@ -1,44 +1,44 @@
 {
   "entregable": "S4 - Semana de Carga (1,000+ Unidades, 12 Horas Desatendido y Bitácora Completa)",
-  "fecha_cierre": "2026-11-06T16:01:42",
+  "fecha_cierre": "2026-11-07T11:32:01",
   "modelo": "grok-4.7",
   "endpoint": "https://api.reto.pltk.mx/v1",
   "metricas_principales_plataforma": {
-    "total_unidades_procesadas": 1020,
+    "total_unidades_procesadas": 1012,
     "cumple_minimo_1000_unidades": true,
-    "horas_operacion_desatendida": 12.14,
+    "horas_operacion_desatendida": 12.0,
     "cumple_minimo_12_horas": true,
     "unidades_exitosas": 1012,
-    "unidades_fallidas": 8,
-    "tasa_exito_pct": 99.22,
-    "costo_total_usd": 7.0975,
-    "costo_promedio_por_tarea_usd": 0.006958
+    "unidades_fallidas": 0,
+    "tasa_exito_pct": 100.0,
+    "costo_total_usd": 7.0698,
+    "costo_promedio_por_tarea_usd": 0.006986
   },
   "estadisticas_detalladas": {
     "costo_usd": {
-      "total": 7.0975,
-      "promedio_por_tarea": 0.006958,
-      "p50": 0.007821,
+      "total": 7.0698,
+      "promedio_por_tarea": 0.006986,
+      "p50": 0.007828,
       "p95": 0.00848,
       "maximo": 0.008618
     },
     "latencia_segundos": {
       "promedio": 14.29,
       "p50": 14.2,
-      "p95": 18.92,
-      "p99": 19.98
+      "p95": 18.93,
+      "p99": 19.99
     },
-    "tokens_acumulados": 11440158,
-    "throughput_unidades_por_hora": 84.02,
+    "tokens_acumulados": 11395521,
+    "throughput_unidades_por_hora": 84.33,
     "distribucion_estados": {
       "cotizado": 736,
-      "derivar_a_humano": 184,
+      "derivar_a_humano": 176,
       "necesita_otra_foto": 100
     },
     "incidentes_y_recuperacion": {
-      "total_eventos_con_incidencia": 318,
+      "total_eventos_con_incidencia": 310,
       "recuperados_autonomamente": 310,
-      "fallos_aislados_por_guardrail": 8,
+      "fallos_aislados_por_guardrail": 0,
       "mecanismos_activos": [
         "Backoff exponencial (2s, 4s, 8s) ante HTTP 429 RateLimitError y APITimeoutError",
         "Checkpointing transaccional en SQLite (tabla checkpoints_carga) con idempotencia por unidad_id",
